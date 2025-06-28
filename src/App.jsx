@@ -190,7 +190,7 @@ const experience = [
     company: 'Google',
     type: 'Contract',
     period: 'Oct 2024 – Present',
-    location: 'Jakarta, Indonesia',
+    location: 'Singapore, Singapore',
     image: googleLogo,
     bullets: [
       'Organize and manage GDG on Campus initiatives across universities.',
