@@ -211,8 +211,8 @@ const experience = [
     ]
   },
   {
-    title: 'Teaching Assistant – Algorithm & Programming (COMP6047001)',
-    company: 'BINUS University',
+    title: 'Teaching Assistant',
+    company: 'BINUS University International',
     period: 'Aug 2024 – Jan 2025',
     location: 'Jakarta, Indonesia',
     image: binusLogo,
@@ -224,8 +224,8 @@ const experience = [
     ]
   },
   {
-    title: 'Subject Matter Expert – Python & UI/UX',
-    company: 'BINUS University',
+    title: 'Subject Matter Expert',
+    company: 'BINUS University International',
     period: 'Aug 2024 – Present',
     location: 'Jakarta, Indonesia',
     image: binusLogo,
