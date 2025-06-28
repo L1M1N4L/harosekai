@@ -501,60 +501,60 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Only start terminal typing animation after loader is gone
   useEffect(() => {
-    let isMounted = true;
-    setTypedPrompt('');
-    setTypedOutput('');
-    setTypedLines([]);
-    let p = 0, o = 0, l = 0;
-    const extraLines = [
-      { text: HERO_TAGLINE, className: 'text-slate-400 text-sm mb-2' },
-      { text: `$ uname -a`, className: 'text-xs text-slate-500 mb-0' },
-      { text: HERO_OS, className: 'text-xs text-slate-300 mb-0' },
-      { text: `$ uptime`, className: 'text-xs text-slate-500 mb-0' },
-      { text: HERO_UPTIME, className: 'text-xs text-slate-300 mb-0' },
-      { text: HERO_LASTLOGIN, className: 'text-xs text-slate-400 mb-0' },
-      { text: `motd: ${HERO_MOTD}`, className: 'text-xs text-green-300 mb-0' },
-    ];
-    const typePrompt = () => {
-      if (!isMounted) return;
-      if (p < HERO_PROMPT.length) {
-        setTypedPrompt(HERO_PROMPT.slice(0, p + 1));
-        p++;
-        setTimeout(typePrompt, TYPING_SPEED);
-      } else {
-        setTimeout(typeOutput, 400);
-      }
-    };
-    const typeOutput = () => {
-      if (!isMounted) return;
-      if (o < HERO_OUTPUT.length) {
-        setTypedOutput(HERO_OUTPUT.slice(0, o + 1));
-        o++;
-        setTimeout(typeOutput, TYPING_SPEED);
-      } else {
-        setTimeout(typeLines, 400);
-      }
-    };
-    const typeLines = () => {
-      if (!isMounted) return;
-      if (l < extraLines.length) {
-        if (extraLines[l] && extraLines[l].className) {
-          setTypedLines((lines) => {
-            // Only add if not already present
-            if (lines.length > 0 && lines[lines.length - 1] === extraLines[l]) return lines;
-            return [...lines, extraLines[l]];
-          });
+    if (!loaderVisible) {
+      let isMounted = true;
+      setTypedPrompt('');
+      setTypedOutput('');
+      setTypedLines([]);
+      let p = 0, o = 0, l = 0;
+      const extraLines = [
+        { text: HERO_TAGLINE, className: 'text-slate-400 text-sm mb-2' },
+        { text: `$ uname -a`, className: 'text-xs text-slate-500 mb-0' },
+        { text: HERO_OS, className: 'text-xs text-slate-300 mb-0' },
+        { text: `$ uptime`, className: 'text-xs text-slate-500 mb-0' },
+        { text: HERO_UPTIME, className: 'text-xs text-slate-300 mb-0' },
+        { text: HERO_LASTLOGIN, className: 'text-xs text-slate-400 mb-0' },
+        { text: `motd: ${HERO_MOTD}`, className: 'text-xs text-green-300 mb-0' },
+      ];
+      const typePrompt = () => {
+        if (!isMounted) return;
+        if (p < HERO_PROMPT.length) {
+          setTypedPrompt(HERO_PROMPT.slice(0, p + 1));
+          p++;
+          setTimeout(typePrompt, TYPING_SPEED);
+        } else {
+          setTimeout(typeOutput, 400);
         }
-        l++;
-        setTimeout(typeLines, 350);
-      } else {
-        // Animation complete
-      }
-    };
-    typePrompt();
-    return () => { isMounted = false; };
-  }, []);
+      };
+      const typeOutput = () => {
+        if (!isMounted) return;
+        if (o < HERO_OUTPUT.length) {
+          setTypedOutput(HERO_OUTPUT.slice(0, o + 1));
+          o++;
+          setTimeout(typeOutput, TYPING_SPEED);
+        } else {
+          setTimeout(typeLines, 400);
+        }
+      };
+      const typeLines = () => {
+        if (!isMounted) return;
+        if (l < extraLines.length) {
+          if (extraLines[l] && extraLines[l].className) {
+            setTypedLines((lines) => {
+              if (lines.length > 0 && lines[lines.length - 1] === extraLines[l]) return lines;
+              return [...lines, extraLines[l]];
+            });
+          }
+          l++;
+          setTimeout(typeLines, 350);
+        }
+      };
+      typePrompt();
+      return () => { isMounted = false; };
+    }
+  }, [loaderVisible]);
 
   useEffect(() => {
     if (!loading) {
@@ -565,8 +565,20 @@ const App = () => {
   }, [loading]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
+    let loaded = false;
+    const onLoad = () => {
+      if (!loaded) {
+        setLoading(false);
+        loaded = true;
+      }
+    };
+    window.addEventListener('load', onLoad);
+    // Fallback: hide loader after 5s if load event never fires
+    const fallback = setTimeout(onLoad, 5000);
+    return () => {
+      window.removeEventListener('load', onLoad);
+      clearTimeout(fallback);
+    };
   }, []);
 
   // Command processing function
@@ -811,7 +823,7 @@ SEE ALSO
               </div>
             ))}
             {bootIndex >= bootLines.length && (
-              <div><span className="text-green-400">l1m1n4l@portfolio:~$ <span className='animate-pulse'>█</span></span></div>
+              <div><span className="text-green-400">l1m1n4l@portfolio:~$ <span className='boot-cursor'>█</span></span></div>
             )}
           </div>
         </div>
