@@ -882,7 +882,7 @@ SEE ALSO
                   // Show menu with animation
                   mobileMenu.classList.remove('hidden');
                   setTimeout(() => {
-                    mobileMenu.style.maxHeight = '200px';
+                    mobileMenu.style.maxHeight = '400px';
                     mobileMenu.style.opacity = '1';
                   }, 10);
                 } else {
@@ -907,7 +907,7 @@ SEE ALSO
         <div 
           id="mobile-menu" 
           className="hidden md:hidden bg-white/95 backdrop-blur-sm border-b border-slate-200 transform transition-all duration-300 ease-in-out origin-top"
-          style={{maxHeight: '0px', opacity: '0'}}
+          style={{maxHeight: '0px', opacity: '0', overflow: 'hidden'}}
         >
           <div className="px-4 py-2 space-y-1">
             {NAV_LINKS.map((link) => (
