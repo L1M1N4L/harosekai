@@ -403,6 +403,8 @@ const App = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [terminalTheme, setTerminalTheme] = useState('default');
   const [showSettings, setShowSettings] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loaderVisible, setLoaderVisible] = useState(true);
 
   // Hero background options
   const heroBackgrounds = [
@@ -552,6 +554,19 @@ const App = () => {
     };
     typePrompt();
     return () => { isMounted = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      // Wait for fade-out transition before removing loader
+      const timeout = setTimeout(() => setLoaderVisible(false), 400);
+      return () => clearTimeout(timeout);
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
   }, []);
 
   // Command processing function
@@ -765,8 +780,42 @@ SEE ALSO
     }
   };
 
+  // Loader boot lines
+  const bootLines = [
+    'Booting L1M1N4L OS...',
+    '[ OK ] Loading kernel modules...',
+    '[ OK ] Mounting /home...',
+    '[ OK ] Starting X server...',
+    '[ OK ] Initializing portfolio...',
+    '[ OK ] Network online',
+    '[ OK ] Ready.'
+  ];
+  const [bootIndex, setBootIndex] = useState(0);
+
+  useEffect(() => {
+    if (loading && bootIndex < bootLines.length) {
+      const t = setTimeout(() => setBootIndex(bootIndex + 1), 80);
+      return () => clearTimeout(t);
+    }
+  }, [loading, bootIndex]);
+
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 font-mono">
+      {/* Loader Overlay */}
+      {loaderVisible && (
+        <div className={`fixed inset-0 z-50 flex flex-col items-start justify-center bg-black transition-opacity duration-500 px-8 sm:px-24 ${loading ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="font-mono text-green-400 text-base sm:text-lg leading-relaxed whitespace-pre">
+            {bootLines.slice(0, bootIndex).map((line, i) => (
+              <div key={i} className={i === 0 ? 'text-white' : ''}>
+                {i === 0 ? <span className="text-white">{line}</span> : line}
+              </div>
+            ))}
+            {bootIndex >= bootLines.length && (
+              <div><span className="text-green-400">l1m1n4l@portfolio:~$ <span className='animate-pulse'>█</span></span></div>
+            )}
+          </div>
+        </div>
+      )}
       {/* Sticky Header */}
       <header
         className={`w-full top-0 left-0 z-30 transition-all duration-300 ${
