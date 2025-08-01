@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import MagicArea from './MagicArea';
 import cafeTable from './assets/Cafe_Table_with_Terminal_LaptopStyle_Urban_0.jpg';
 import sereneLandscape from './assets/Default_Create_a_serene_Japanese_animestyle_landscape_backgrou_3.jpg';
@@ -162,7 +163,7 @@ const writings = [
   {
     title: 'A Guide to Learning Japanese',
     excerpt: 'Compiled a structured, web-based guide for independent Japanese learners, covering grammar, vocabulary, usage examples, and cultural insights.',
-    link: 'https://l1m1n4l.github.io/A-guide-to-learning-Japanese/',
+    link: '/guide-to-learning-japanese',
   },
   {
     title: 'COMP6210001 - Ethical Hacking Blog',
@@ -1258,7 +1259,11 @@ SEE ALSO
           <ul className="space-y-6 sm:space-y-8">
             {writings.map((w, idx) => (
               <li key={idx} className="border-b border-slate-200 pb-4 sm:pb-6">
-                <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline">{w.title}</a>
+                {w.link.startsWith('/') ? (
+                  <Link to={w.link} className="text-base sm:text-lg font-semibold hover:underline">{w.title}</Link>
+                ) : (
+                  <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline" target="_blank" rel="noopener noreferrer">{w.title}</a>
+                )}
                 <p className="text-slate-600 text-sm mt-2">{w.excerpt}</p>
               </li>
             ))}
