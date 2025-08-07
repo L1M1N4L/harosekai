@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MagicArea from './MagicArea';
-import cafeTable from './assets/Cafe_Table_with_Terminal_LaptopStyle_Urban_0.jpg';
-import sereneLandscape from './assets/Default_Create_a_serene_Japanese_animestyle_landscape_backgrou_3.jpg';
-import developerSetup from './assets/developer_setup.png';
-import mountainRetreat from './assets/Mountain_Retreat_Color_Them_0.jpg';
-import officeAtNight from './assets/office_at_night_ins_0.jpg';
+import cafeTable from './assets/nachi_waterfall.jpg';
+import sereneLandscape from './assets/glico.jpg';
+import developerSetup from './assets/osaka_meow.jpg';
+import mountainRetreat from './assets/kyoto_kyomizu.jpg';
+import officeAtNight from './assets/meow.jpg';
 import transTelLogo from './assets/experience_logo/TransTel-03.png';
 import googleLogo from './assets/experience_logo/sq-google-g-logo-update_dezeen_2364_col_0-852x852.png';
 import zioncomLogo from './assets/experience_logo/logo_zioncom.png';
