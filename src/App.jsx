@@ -13,7 +13,7 @@ import binusLogo from './assets/experience_logo/-Binus-University-Bina-Nusanta_l
 import binusAsoLogo from './assets/experience_logo/Logo-Binus-aso.png';
 import gdscLogo from './assets/experience_logo/gdg_logo.png';
 import sheCodesLogo from './assets/experience_logo/Shecodes_logo.png';
-import semestaMedikaLogo from './assets/experience_logo/logo_semesta_medika.png';
+// import semestaMedikaLogo from './assets/experience_logo/logo_semesta_medika.png';
 
 // SVG Logo Component with Cover Corp style
 const CoverCorpLogo = () => (
@@ -87,103 +87,58 @@ const projects = [
   },
 ];
 
-const clients = [
-  {
-    name: 'TransTel Communications, Inc.',
-    logo: transTelLogo,
-    description: 'Telecommunications company specializing in VoIP and PABX systems.',
-    projects: [
-      {
-        title: 'Company Website Redesign',
-        description: 'Redesigned and modernized the company website, increasing user engagement by 400%.',
-        tech: ['React', 'Node.js', 'UI/UX'],
-        link: 'https://transtelindonesia.co.id/',
-      },
-      {
-        title: 'HyperTerminal PABX Interface',
-        description: 'Developed HyperTerminal, a Java-based PABX interface for system management. (Confidential - source code cannot be disclosed)',
-        tech: ['Java', 'PABX', 'System Integration'],
-        link: null,
-      },
-      {
-        title: 'VoIP Billing System',
-        description: 'Built an automated VoIP billing system using Java and Python. (Confidential - source code cannot be disclosed)',
-        tech: ['Java', 'Python', 'Billing System'],
-        link: null,
-      }
-    ]
-  },
-  {
-    name: 'Semesta Medika',
-    logo: semestaMedikaLogo,
-    description: 'Healthcare platform providing comprehensive medical services and patient management.',
-    projects: [
-      {
-        title: 'Main Website',
-        description: 'Modern, responsive website for Semesta Medika with comprehensive information about medical services and facilities.',
-        tech: ['React', 'Node.js', 'UI/UX', 'Healthcare'],
-        link: 'https://semsestamedikamakmur.com/',
-      },
-      {
-        title: 'Help Desk & Ticketing System',
-        description: 'Comprehensive help desk and ticketing system for managing customer support requests and service inquiries.',
-        tech: ['React', 'Node.js', 'Database', 'Ticketing System'],
-        link: 'https://wads-frontend-alpha.vercel.app/',
-      }
-    ]
-  },
-  {
-    name: 'Zioncom Technology Ltd',
-    logo: zioncomLogo,
-    description: 'Technology company focused on security and surveillance systems.',
-    projects: [
-      {
-        title: 'Real-time People Detection System',
-        description: 'Built real-time people detection with OpenCV + Python for security monitoring. (Closed source - government requirements)',
-        tech: ['Python', 'OpenCV', 'Computer Vision'],
-        link: null,
-      },
-      {
-        title: 'Automated Security Monitoring',
-        description: 'Integrated ML, DVR systems, and Arduino for automated security monitoring. (Closed source - government requirements)',
-        tech: ['Machine Learning', 'DVR', 'Arduino'],
-        link: null,
-      },
-      {
-        title: 'Military Security Systems',
-        description: 'Confidential military-grade security and surveillance systems (details cannot be disclosed).',
-        tech: ['Confidential', 'Military', 'Security'],
-        link: null,
-      }
-    ]
-  }
-];
+// Clients data removed as per design simplification
 
-const writings = [
+const featuredWritings = [
+  {
+    title: 'COMP6210001 - Ethical Hacking Blog',
+    excerpt: 'A comprehensive blog covering cybersecurity fundamentals, penetration testing, OSINT techniques, and ethical hacking methodologies.',
+    link: 'https://comp6210001.wordpress.com',
+    type: 'Cybersecurity Blog',
+  },
   {
     title: 'A Guide to Learning Japanese',
     excerpt: 'Compiled a structured, web-based guide for independent Japanese learners, covering grammar, vocabulary, usage examples, and cultural insights.',
     link: '/guide-to-learning-japanese',
+    type: 'Educational Blog',
+  },
+];
+
+const featuredTalks = [
+  {
+    title: 'Beyond REST: Exploring Modern API Protocols',
+    event: 'GDGoC Talk Series #3',
+    date: 'July 2025',
+    type: 'Technical Talk',
+    attendees: '200+ developers',
   },
   {
-    title: 'COMP6210001 - Ethical Hacking Blog',
-    excerpt: 'A comprehensive blog covering cybersecurity fundamentals, penetration testing, OSINT techniques, and ethical hacking methodologies. Features weekly posts on Linux fundamentals, target scoping, Google Fu, and security assessment procedures.',
-    link: 'https://comp6210001.wordpress.com',
+    title: 'Build with AI: From Ideas to Impact',
+    event: 'Google Developer Groups',
+    date: 'February 2025',
+    type: 'Workshop',
+    attendees: '60+ participants',
+  },
+  {
+    title: 'Data Visualization Fundamentals',
+    event: 'SheCodes Workshop Series',
+    date: 'January 2025',
+    type: 'Workshop',
+    attendees: '40+ participants',
   },
 ];
 
 const experience = [
   {
-    title: 'Software Engineer',
-    company: 'TransTel Communications, Inc.',
+    title: 'Software Engineer (Contract-based)',
+    company: 'TRANSTEL COMMUNICATIONS PVT. LTD.',
     type: 'Contract',
-    location: 'United States · Hybrid',
+    location: 'Florida, USA',
     period: 'Jun 2023 – Present',
     image: transTelLogo,
     bullets: [
-      'Redesigned and modernized the company website, increasing user engagement by 400%.',
-      'Developed HyperTerminal, a Java-based PABX interface.',
-      'Built an automated VoIP billing system using Java and Python.'
+      'Built a PBX billing system (Java Swing + WebSocket + Python) reducing manual processing time by ~40% and improving accuracy.',
+      'Converted static site to dynamic platform and added a messaging system, leading to ~3× increase in customer inquiries and higher engagement.'
     ]
   },
   {
@@ -191,24 +146,22 @@ const experience = [
     company: 'Google',
     type: 'Contract',
     period: 'Oct 2024 – Present',
-    location: 'Singapore, Singapore',
+    location: null,
     image: googleLogo,
     bullets: [
-      'Organize and manage GDG on Campus initiatives across universities.',
-      'Lead technical workshops, bootcamps, and developer events to promote the adoption of Google technologies.',
-      'Mentor student leaders, coordinate with Google teams, and grow local developer ecosystems.',
-      'Serve as a key DevRel bridge between Google and the academic developer community.'
+      'Delivered large-scale developer events and hackathons, engaging 1,000+ students across Indonesia in hands-on learning.',
+      'Promoted Google technologies (Cloud, Gemini, Flutter) through workshops and community programs.'
     ]
   },
   {
     title: 'Software Engineer Intern',
-    company: 'Zioncom Technology Ltd',
+    company: 'ZIONCOM TECHNOLOGY',
     location: 'Jakarta, Indonesia',
-    period: 'Apr 2023 – Jun 2023',
+    period: 'Mar 2023 – Jul 2023',
     image: zioncomLogo,
     bullets: [
-      'Built real-time people detection with OpenCV + Python.',
-      'Integrated ML, DVR systems, and Arduino for automated security monitoring.'
+      'Achieved ~90% detection accuracy for real-time security monitoring by developing a computer vision people detection system using OpenCV (Python) on embedded devices.',
+      'Integrated ML models, DVR systems, and Arduino into an automated alert pipeline, reducing incident response time by ~35%.'
     ]
   },
   {
@@ -263,13 +216,14 @@ const volunteering = [
     ]
   },
   {
-    title: 'Administrator',
-    org: 'SheCodes Society',
+    title: 'Community Manager',
+    org: 'SheCodes Society (British Council Funded)',
     period: 'Jan 2025 – Present',
     image: sheCodesLogo,
     bullets: [
-      'Organized events promoting women in tech in collaboration with GDG Campus Indonesia.',
-      'Created inclusive workshops and mentorship opportunities for women in STEM.'
+      'Mentor high school to university women in STEM on data visualization and data cleaning using Tableau and Python.',
+      'Drive community engagement by coordinating initiatives through Google Classroom and WhatsApp.',
+      'Advocate for Google technologies through inclusive workshops and events.'
     ]
   }
 ];
@@ -345,6 +299,7 @@ const NAV_LINKS = [
   { id: 'experience', label: 'EXPERIENCE' },
   { id: 'portfolio', label: 'PORTFOLIO' },
   { id: 'writings', label: 'WRITINGS' },
+  { id: 'talks', label: 'TALKS' },
   { id: 'volunteering', label: 'VOLUNTEERING' },
   { id: 'contact', label: 'CONTACT' },
 ];
@@ -366,6 +321,11 @@ const TERMINAL_COMMANDS = [
     sub: '',
   },
   {
+    prompt: 'talks',
+    output: `Recent Talks & Presentations:\n  - Introduction to Flutter Development (GDSC BINUS)\n  - Building Cross-Platform Apps with Firebase (GDG Campus)\n  - Japanese Language Learning Strategies (BINUS ASO)\n\nTotal: 3 talks, 180+ attendees`,
+    sub: '',
+  },
+  {
     prompt: 'volunteering',
     output: `GDSC Technical Developer\n  - Oct 2023–Oct 2024\n  Flutter, Firebase, ML workshops\nSheCodes Society Admin\n  - Jan 2025–Present\n  Women in tech, inclusive events`,
     sub: '',
@@ -377,7 +337,7 @@ const TERMINAL_COMMANDS = [
   },
   {
     prompt: 'ls',
-    output: `portfolio/          projects/          skills/            experience/\nvolunteering/       writings/          contact/           README.md\nl1m1n4l.exe         debug.log`,
+    output: `portfolio/          projects/          skills/            experience/\nvolunteering/       writings/          talks/              contact/\nREADME.md           l1m1n4l.exe        debug.log`,
     sub: '',
   },
 ];
@@ -406,6 +366,8 @@ const App = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loaderVisible, setLoaderVisible] = useState(true);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showAllQualifications, setShowAllQualifications] = useState(false);
 
   // Hero background options
   const heroBackgrounds = [
@@ -873,7 +835,7 @@ SEE ALSO
           
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-all duration-200 hover:scale-105 ${
+            className={`md:hidden p-2 rounded-lg transition-all duration-200  ${
               scrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'
             }`}
             onClick={() => {
@@ -915,7 +877,7 @@ SEE ALSO
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className={`block px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105
+                className={`block px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 transform 
                   ${active === link.id
                     ? 'text-slate-900 bg-slate-100'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'}`}
@@ -1062,7 +1024,7 @@ SEE ALSO
                     <button
                       key={themeName}
                       onClick={() => setTerminalTheme(themeName)}
-                      className={`w-full flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 transform hover:scale-105 ${
+                      className={`w-full flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 transform  ${
                         terminalTheme === themeName
                           ? 'border-green-500 bg-green-500/10'
                           : 'border-slate-600 hover:border-slate-500 hover:bg-slate-700/50'
@@ -1126,8 +1088,8 @@ SEE ALSO
 
       {/* Professional Experience Section */}
       <section id="experience" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-center">PROFESSIONAL EXPERIENCE</h2>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PROFESSIONAL EXPERIENCE</h2>
           <div className="space-y-8 sm:space-y-10">
             {experience.map((exp, idx) => (
               <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 pb-6 sm:pb-8">
@@ -1166,115 +1128,200 @@ SEE ALSO
 
       {/* Portfolio Section */}
       <section id="portfolio" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-center">PORTFOLIO</h2>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PORTFOLIO</h2>
           
           {/* Projects Subsection */}
           <div className="mb-16 sm:mb-20">
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-center text-slate-700">PROJECTS</h3>
-            <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {projects.map((project, idx) => (
-              <div key={idx} className="border border-slate-200 rounded-lg p-4 sm:p-6 flex flex-col gap-3 hover:shadow-md transition-shadow bg-white">
-                <h3 className="text-base sm:text-lg font-semibold mb-1">{project.title}</h3>
-                <p className="text-slate-600 text-sm mb-2">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {project.tech.map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs border border-slate-300 rounded bg-slate-50 text-slate-700">{t}</span>
-                  ))}
-                </div>
-                {project.link && (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline self-start">View Project</a>
-                )}
-              </div>
-            ))}
-            </div>
-          </div>
-
-          {/* Clients Subsection */}
-          <div className="mb-16 sm:mb-20">
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-center text-slate-700">CLIENTS & PROJECTS</h3>
-            <div className="space-y-12 sm:space-y-16">
-              {clients.map((client, idx) => (
-                <div key={idx} className="border border-slate-200 rounded-lg p-6 sm:p-8 bg-white">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
-                    <img src={client.logo} alt={client.name} className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded bg-slate-100 border border-slate-200" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">{client.name}</h3>
-                      <p className="text-slate-600 text-sm sm:text-base">{client.description}</p>
-                    </div>
-                  </div>
-                  <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {client.projects.map((project, projectIdx) => (
-                      <div key={projectIdx} className="border border-slate-200 rounded-lg p-4 sm:p-6 bg-slate-50">
-                        <h4 className="text-base sm:text-lg font-semibold mb-2">{project.title}</h4>
-                        <p className="text-slate-600 text-sm mb-3">{project.description}</p>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {project.tech.map((tech) => (
-                            <span key={tech} className="px-2 py-1 text-xs border border-slate-300 rounded bg-white text-slate-700">{tech}</span>
-                          ))}
-                        </div>
-                        {project.link && (
-                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline">View Project</a>
+            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700">PROJECTS</h3>
+            <ul className="space-y-6 sm:space-y-8">
+              {(showAllProjects ? projects : projects.slice(0, 4)).map((project, idx) => (
+                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 last:border-0">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        {project.link ? (
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg font-semibold hover:underline">
+                            {project.title}
+                          </a>
+                        ) : (
+                          <span className="text-base sm:text-lg font-semibold">{project.title}</span>
                         )}
                       </div>
-                    ))}
+                      <p className="text-slate-600 text-sm mb-2">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((t) => (
+                          <span key={t} className="px-2 py-1 text-xs rounded border border-slate-200 bg-slate-50 text-slate-700">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline whitespace-nowrap mt-1">Open</a>
+                    )}
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
+            {projects.length > 4 && (
+              <div className="mt-4">
+                <button
+                  onClick={() => setShowAllProjects(!showAllProjects)}
+                  className="text-sm text-slate-600 hover:text-slate-900 underline"
+                >
+                  {showAllProjects ? 'Show less projects' : `View more projects (${projects.length - 4}) →`}
+                </button>
+              </div>
+            )}
           </div>
+
+          {/* Clients Subsection - removed as per request */}
 
           {/* Qualifications Subsection */}
           <div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-center text-slate-700">QUALIFICATIONS</h3>
-            <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-              {qualifications.map((qual, idx) => (
-                <div key={idx} className="border border-slate-200 rounded-lg p-4 sm:p-6 bg-white hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-base sm:text-lg font-semibold text-slate-900">{qual.title}</h3>
-                    <span className={`px-2 py-1 text-xs rounded ${
-                      qual.type === 'Degree' 
-                        ? 'bg-blue-100 text-blue-700 border border-blue-200' 
-                        : 'bg-green-100 text-green-700 border border-green-200'
-                    }`}>
-                      {qual.type}
-                    </span>
+            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700">QUALIFICATIONS</h3>
+            <ul className="space-y-6 sm:space-y-8">
+              {(showAllQualifications ? qualifications : qualifications.slice(0, 6)).map((qual, idx) => (
+                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 last:border-0">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h4 className="text-base sm:text-lg font-semibold text-slate-900">{qual.title}</h4>
+                      <p className="text-slate-600 text-sm">{qual.institution}</p>
+                      <p className="text-slate-500 text-xs mt-1">{qual.period}</p>
+                      {qual.credentialId && (
+                        <p className="text-xs text-slate-400 mt-1">Credential ID: {qual.credentialId}</p>
+                      )}
+                    </div>
+                    <span className="px-2 py-1 text-xs rounded border border-slate-200 bg-slate-50 text-slate-700 whitespace-nowrap ml-4">{qual.type}</span>
                   </div>
-                  <p className="text-slate-600 text-sm mb-2">{qual.institution}</p>
-                  <p className="text-slate-500 text-xs mb-3">{qual.period}</p>
-                  {qual.credentialId && (
-                    <p className="text-xs text-slate-400">Credential ID: {qual.credentialId}</p>
-                  )}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
+            {qualifications.length > 6 && (
+              <div className="mt-4">
+                <button
+                  onClick={() => setShowAllQualifications(!showAllQualifications)}
+                  className="text-sm text-slate-600 hover:text-slate-900 underline"
+                >
+                  {showAllQualifications ? 'Show less qualifications' : `View more qualifications (${qualifications.length - 6}) →`}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Writings Section */}
       <section id="writings" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-center">WRITINGS</h2>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-8 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-widest">WRITINGS</h2>
+            <Link 
+              to="/writings" 
+              className="text-sm text-slate-600 hover:text-slate-900 underline transition-colors duration-200"
+            >
+              View All →
+            </Link>
+          </div>
+          
           <ul className="space-y-6 sm:space-y-8">
-            {writings.map((w, idx) => (
+            {featuredWritings.map((w, idx) => (
               <li key={idx} className="border-b border-slate-200 pb-4 sm:pb-6">
-                {w.link.startsWith('/') ? (
-                  <Link to={w.link} className="text-base sm:text-lg font-semibold hover:underline">{w.title}</Link>
-                ) : (
-                  <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline" target="_blank" rel="noopener noreferrer">{w.title}</a>
-                )}
-                <p className="text-slate-600 text-sm mt-2">{w.excerpt}</p>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      {w.link.startsWith('/') ? (
+                        <Link to={w.link} className="text-base sm:text-lg font-semibold hover:underline">{w.title}</Link>
+                      ) : (
+                        <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline" target="_blank" rel="noopener noreferrer">{w.title}</a>
+                      )}
+                      <span className="px-2 py-1 text-xs bg-slate-100 text-slate-600 rounded border border-slate-200">
+                        {w.type}
+                      </span>
+                    </div>
+                    <p className="text-slate-600 text-sm mt-1">{w.excerpt}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
+          
+          <div className="mt-4">
+            <Link 
+              to="/writings" 
+              className="text-sm text-slate-600 hover:text-slate-900 underline"
+            >
+              View all writings →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Talks Section */}
+      <section id="talks" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-8 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-widest">TALKS & PRESENTATIONS</h2>
+            <Link 
+              to="/talks" 
+              className="text-sm text-slate-600 hover:text-slate-900 underline transition-colors duration-200"
+            >
+              View All →
+            </Link>
+          </div>
+          
+          <ul className="space-y-6 sm:space-y-8">
+            {featuredTalks.map((talk, idx) => (
+              <li key={idx} className="border-b border-slate-200 pb-4 sm:pb-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-base sm:text-lg font-semibold text-slate-900">{talk.title}</h3>
+                      <span className={`px-2 py-1 text-xs rounded border font-medium ${
+                        talk.type === 'Workshop' 
+                          ? 'bg-blue-50 text-blue-700 border-blue-200' 
+                          : 'bg-green-50 text-green-700 border-green-200'
+                      }`}>
+                        {talk.type}
+                      </span>
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      <strong>{talk.event}</strong>
+                    </div>
+                    <div className="flex flex-wrap gap-4 text-xs text-slate-500 mt-2">
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                        </svg>
+                        {talk.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
+                        </svg>
+                        {talk.attendees}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          
+          <div className="mt-4">
+            <Link 
+              to="/talks" 
+              className="text-sm text-slate-600 hover:text-slate-900 underline"
+            >
+              View all talks →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Volunteering Section */}
       <section id="volunteering" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-center">VOLUNTEERING</h2>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">VOLUNTEERING</h2>
           <div className="space-y-8 sm:space-y-10">
             {volunteering.map((vol, idx) => (
               <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 pb-6 sm:pb-8">
@@ -1307,8 +1354,8 @@ SEE ALSO
         id="contact" 
         className="min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 bg-white"
       >
-        <div className="w-full max-w-sm sm:max-w-md lg:max-w-2xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-center text-slate-900">CONTACT</h2>
+        <div className="w-full max-w-5xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-slate-900">CONTACT</h2>
           
           {/* Simple Contact Form */}
           <div className="p-6 sm:p-8">
