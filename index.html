@@ -5,6 +5,21 @@
     <link rel="icon" type="image/png" href="/site_tab_image.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>L1M1N4L - Portfolio</title>
+    <script>
+      // Apply theme before React loads to prevent flash
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const shouldBeDark = stored 
+          ? stored === 'dark' 
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (shouldBeDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     
     <!-- Sphere Engine Compilers Widget SDK -->
     <script>

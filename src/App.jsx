@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MagicArea from './MagicArea';
+import ThemeToggle from './ThemeToggle';
 import cafeTable from './assets/nachi_waterfall.jpg';
 import sereneLandscape from './assets/glico.jpg';
 import developerSetup from './assets/osaka_meow.jpg';
@@ -440,8 +441,8 @@ const App = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      // 80px is a good threshold for when to change nav color
-      setScrolled(window.scrollY > window.innerHeight * 0.7);
+      // Change nav color when scrolled halfway through the viewport
+      setScrolled(window.scrollY > window.innerHeight * 0.5);
     };
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -775,7 +776,7 @@ SEE ALSO
   }, [loading, bootIndex]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 font-mono">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-mono">
       {/* Loader Overlay */}
       {loaderVisible && (
         <div className={`fixed inset-0 z-50 flex flex-col items-start justify-center bg-black transition-opacity duration-500 px-8 sm:px-24 ${loading ? 'opacity-100' : 'opacity-0'}`}>
@@ -795,7 +796,7 @@ SEE ALSO
       <header
         className={`w-full top-0 left-0 z-30 transition-all duration-300 ${
           scrolled
-            ? 'fixed bg-white/90 border-b border-slate-200 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80'
+            ? 'fixed bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-slate-900/80'
             : 'fixed bg-transparent border-b border-transparent'
         }`}
       >
@@ -803,42 +804,51 @@ SEE ALSO
           <h1 className="text-xl sm:text-2xl font-bold tracking-widest">
             <a
               href="#home"
-              className={`hover:underline transition-colors duration-150 ${scrolled ? 'text-slate-900' : 'text-white'}`}
+              className={`hover:underline transition-colors duration-150 ${scrolled ? 'text-slate-900 dark:text-slate-100' : 'text-white'}`}
             >
               L1M1N4L
             </a>
           </h1>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center">
-            <MagicArea className="flex gap-6 lg:gap-10" highlightClass="bg-white/80 ring-1 ring-slate-300/40">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.id}
-                  href={`#${link.id}`}
-                  className={`px-2 py-1 text-sm lg:text-base font-medium transition-colors duration-150
-                    ${active === link.id
-                      ? scrolled
-                        ? 'text-slate-900 font-bold is-magic-active'
-                        : 'text-white font-bold is-magic-active'
-                      : scrolled
-                        ? 'text-slate-800 hover:text-slate-900'
-                        : 'text-slate-200 hover:text-white'}`}
-                  aria-current={active === link.id ? 'page' : undefined}
-                  onClick={() => setActive(link.id)}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </MagicArea>
-          </nav>
+          <div className="hidden md:flex items-center gap-4">
+            {/* Desktop Navigation */}
+            <nav className="flex items-center">
+              <MagicArea className="flex gap-6 lg:gap-10" highlightClass="bg-white/80 ring-1 ring-slate-300/40">
+                {NAV_LINKS.map((link) => (
+                  <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className={`px-2 py-1 text-sm lg:text-base font-medium transition-colors duration-150
+                      ${active === link.id
+                        ? scrolled
+                          ? 'text-slate-900 dark:text-slate-100 font-bold is-magic-active'
+                          : 'text-white font-bold is-magic-active'
+                        : scrolled
+                          ? 'text-slate-800 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100'
+                          : 'text-slate-200 hover:text-white'}`}
+                    aria-current={active === link.id ? 'page' : undefined}
+                    onClick={() => setActive(link.id)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </MagicArea>
+            </nav>
+            
+            {/* Theme Toggle - Far Right */}
+            <div className="flex items-center">
+              <ThemeToggle className={scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'} />
+            </div>
+          </div>
           
           {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden p-2 rounded-lg transition-all duration-200  ${
-              scrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'
-            }`}
-            onClick={() => {
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle className={scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'} />
+            <button
+              className={`p-2 rounded-lg transition-all duration-200  ${
+                scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'
+              }`}
+              onClick={() => {
               const mobileMenu = document.getElementById('mobile-menu');
               if (mobileMenu) {
                 if (mobileMenu.classList.contains('hidden')) {
@@ -864,12 +874,13 @@ SEE ALSO
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
+          </div>
         </div>
         
         {/* Mobile Navigation Menu */}
         <div 
           id="mobile-menu" 
-          className="hidden md:hidden bg-white/95 backdrop-blur-sm border-b border-slate-200 transform transition-all duration-300 ease-in-out origin-top"
+          className="hidden md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 transform transition-all duration-300 ease-in-out origin-top"
           style={{maxHeight: '0px', opacity: '0', overflow: 'hidden'}}
         >
           <div className="px-4 py-2 space-y-1">
@@ -879,8 +890,8 @@ SEE ALSO
                 href={`#${link.id}`}
                 className={`block px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 transform 
                   ${active === link.id
-                    ? 'text-slate-900 bg-slate-100'
-                    : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'}`}
+                    ? 'text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-50 dark:hover:bg-slate-800'}`}
                 aria-current={active === link.id ? 'page' : undefined}
                 onClick={() => {
                   setActive(link.id);
@@ -1087,20 +1098,20 @@ SEE ALSO
       </section>
 
       {/* Professional Experience Section */}
-      <section id="experience" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+      <section id="experience" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PROFESSIONAL EXPERIENCE</h2>
           <div className="space-y-8 sm:space-y-10">
             {experience.map((exp, idx) => (
-              <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 pb-6 sm:pb-8">
-                <img src={exp.image} alt={exp.company} className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded bg-slate-100 border border-slate-200 self-start" />
+              <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 dark:border-slate-800 pb-6 sm:pb-8">
+                <img src={exp.image} alt={exp.company} className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 self-start" />
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="font-semibold text-base sm:text-lg">{exp.title}</span>
-                    <span className="text-xs px-2 py-0.5 rounded bg-slate-100 border border-slate-200 ml-2">{exp.company}</span>
-                    {exp.type && <span className="text-xs px-2 py-0.5 rounded bg-green-100 border border-green-200 ml-2">{exp.type}</span>}
+                    <span className="font-semibold text-base sm:text-lg text-slate-900 dark:text-slate-100">{exp.title}</span>
+                    <span className="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 ml-2 text-slate-700 dark:text-slate-300">{exp.company}</span>
+                    {exp.type && <span className="text-xs px-2 py-0.5 rounded bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 ml-2 text-green-700 dark:text-green-300">{exp.type}</span>}
                   </div>
-                  <div className="text-xs text-slate-500 mb-2 flex flex-wrap gap-2 sm:gap-4">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mb-2 flex flex-wrap gap-2 sm:gap-4">
                     {exp.location && (
                       <span className="flex items-center gap-1">
                         <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -1116,7 +1127,7 @@ SEE ALSO
                       {exp.period}
                     </span>
                   </div>
-                  <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
+                  <ul className="list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
                     {exp.bullets.map((b, i) => <li key={i}>{b}</li>)}
                   </ul>
                 </div>
@@ -1127,36 +1138,36 @@ SEE ALSO
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+      <section id="portfolio" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PORTFOLIO</h2>
           
           {/* Projects Subsection */}
           <div className="mb-16 sm:mb-20">
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700">PROJECTS</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700 dark:text-slate-300">PROJECTS</h3>
             <ul className="space-y-6 sm:space-y-8">
               {(showAllProjects ? projects : projects.slice(0, 4)).map((project, idx) => (
-                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 last:border-0">
+                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 dark:border-slate-800 last:border-0">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         {project.link ? (
-                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg font-semibold hover:underline">
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-base sm:text-lg font-semibold hover:underline text-slate-900 dark:text-slate-100">
                             {project.title}
                           </a>
                         ) : (
-                          <span className="text-base sm:text-lg font-semibold">{project.title}</span>
+                          <span className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{project.title}</span>
                         )}
                       </div>
-                      <p className="text-slate-600 text-sm mb-2">{project.description}</p>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm mb-2">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tech.map((t) => (
-                          <span key={t} className="px-2 py-1 text-xs rounded border border-slate-200 bg-slate-50 text-slate-700">{t}</span>
+                          <span key={t} className="px-2 py-1 text-xs rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300">{t}</span>
                         ))}
                       </div>
                     </div>
                     {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline whitespace-nowrap mt-1">Open</a>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 dark:text-blue-400 underline whitespace-nowrap mt-1">Open</a>
                     )}
                   </div>
                 </li>
@@ -1166,7 +1177,7 @@ SEE ALSO
               <div className="mt-4">
                 <button
                   onClick={() => setShowAllProjects(!showAllProjects)}
-                  className="text-sm text-slate-600 hover:text-slate-900 underline"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
                 >
                   {showAllProjects ? 'Show less projects' : `View more projects (${projects.length - 4}) →`}
                 </button>
@@ -1178,20 +1189,20 @@ SEE ALSO
 
           {/* Qualifications Subsection */}
           <div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700">QUALIFICATIONS</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700 dark:text-slate-300">QUALIFICATIONS</h3>
             <ul className="space-y-6 sm:space-y-8">
               {(showAllQualifications ? qualifications : qualifications.slice(0, 6)).map((qual, idx) => (
-                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 last:border-0">
+                <li key={idx} className="pb-6 sm:pb-8 border-b border-slate-200 dark:border-slate-800 last:border-0">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h4 className="text-base sm:text-lg font-semibold text-slate-900">{qual.title}</h4>
-                      <p className="text-slate-600 text-sm">{qual.institution}</p>
-                      <p className="text-slate-500 text-xs mt-1">{qual.period}</p>
+                      <h4 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{qual.title}</h4>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">{qual.institution}</p>
+                      <p className="text-slate-500 dark:text-slate-500 text-xs mt-1">{qual.period}</p>
                       {qual.credentialId && (
-                        <p className="text-xs text-slate-400 mt-1">Credential ID: {qual.credentialId}</p>
+                        <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Credential ID: {qual.credentialId}</p>
                       )}
                     </div>
-                    <span className="px-2 py-1 text-xs rounded border border-slate-200 bg-slate-50 text-slate-700 whitespace-nowrap ml-4">{qual.type}</span>
+                    <span className="px-2 py-1 text-xs rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 whitespace-nowrap ml-4">{qual.type}</span>
                   </div>
                 </li>
               ))}
@@ -1200,7 +1211,7 @@ SEE ALSO
               <div className="mt-4">
                 <button
                   onClick={() => setShowAllQualifications(!showAllQualifications)}
-                  className="text-sm text-slate-600 hover:text-slate-900 underline"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
                 >
                   {showAllQualifications ? 'Show less qualifications' : `View more qualifications (${qualifications.length - 6}) →`}
                 </button>
@@ -1211,13 +1222,13 @@ SEE ALSO
       </section>
 
       {/* Writings Section */}
-      <section id="writings" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+      <section id="writings" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold tracking-widest">WRITINGS</h2>
             <Link 
               to="/writings" 
-              className="text-sm text-slate-600 hover:text-slate-900 underline transition-colors duration-200"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
             >
               View All →
             </Link>
@@ -1225,20 +1236,20 @@ SEE ALSO
           
           <ul className="space-y-6 sm:space-y-8">
             {featuredWritings.map((w, idx) => (
-              <li key={idx} className="border-b border-slate-200 pb-4 sm:pb-6">
+              <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       {w.link.startsWith('/') ? (
-                        <Link to={w.link} className="text-base sm:text-lg font-semibold hover:underline">{w.title}</Link>
+                        <Link to={w.link} className="text-base sm:text-lg font-semibold hover:underline text-slate-900 dark:text-slate-100">{w.title}</Link>
                       ) : (
-                        <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline" target="_blank" rel="noopener noreferrer">{w.title}</a>
+                        <a href={w.link} className="text-base sm:text-lg font-semibold hover:underline text-slate-900 dark:text-slate-100" target="_blank" rel="noopener noreferrer">{w.title}</a>
                       )}
-                      <span className="px-2 py-1 text-xs bg-slate-100 text-slate-600 rounded border border-slate-200">
+                      <span className="px-2 py-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded border border-slate-200 dark:border-slate-700">
                         {w.type}
                       </span>
                     </div>
-                    <p className="text-slate-600 text-sm mt-1">{w.excerpt}</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{w.excerpt}</p>
                   </div>
                 </div>
               </li>
@@ -1248,7 +1259,7 @@ SEE ALSO
           <div className="mt-4">
             <Link 
               to="/writings" 
-              className="text-sm text-slate-600 hover:text-slate-900 underline"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
             >
               View all writings →
             </Link>
@@ -1257,13 +1268,13 @@ SEE ALSO
       </section>
 
       {/* Talks Section */}
-      <section id="talks" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+      <section id="talks" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold tracking-widest">TALKS & PRESENTATIONS</h2>
             <Link 
               to="/talks" 
-              className="text-sm text-slate-600 hover:text-slate-900 underline transition-colors duration-200"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
             >
               View All →
             </Link>
@@ -1271,23 +1282,23 @@ SEE ALSO
           
           <ul className="space-y-6 sm:space-y-8">
             {featuredTalks.map((talk, idx) => (
-              <li key={idx} className="border-b border-slate-200 pb-4 sm:pb-6">
+              <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-base sm:text-lg font-semibold text-slate-900">{talk.title}</h3>
+                      <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{talk.title}</h3>
                       <span className={`px-2 py-1 text-xs rounded border font-medium ${
                         talk.type === 'Workshop' 
-                          ? 'bg-blue-50 text-blue-700 border-blue-200' 
-                          : 'bg-green-50 text-green-700 border-green-200'
+                          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800' 
+                          : 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800'
                       }`}>
                         {talk.type}
                       </span>
                     </div>
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-slate-600 dark:text-slate-400">
                       <strong>{talk.event}</strong>
                     </div>
-                    <div className="flex flex-wrap gap-4 text-xs text-slate-500 mt-2">
+                    <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-500 mt-2">
                       <span className="flex items-center gap-1">
                         <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -1310,7 +1321,7 @@ SEE ALSO
           <div className="mt-4">
             <Link 
               to="/talks" 
-              className="text-sm text-slate-600 hover:text-slate-900 underline"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
             >
               View all talks →
             </Link>
@@ -1319,19 +1330,19 @@ SEE ALSO
       </section>
 
       {/* Volunteering Section */}
-      <section id="volunteering" className="py-16 sm:py-24 px-4 border-t border-slate-100 bg-white">
+      <section id="volunteering" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">VOLUNTEERING</h2>
           <div className="space-y-8 sm:space-y-10">
             {volunteering.map((vol, idx) => (
-              <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 pb-6 sm:pb-8">
-                <img src={vol.image} alt={vol.org} className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded bg-slate-100 border border-slate-200 self-start" />
+              <div key={idx} className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 border-b border-slate-100 dark:border-slate-800 pb-6 sm:pb-8">
+                <img src={vol.image} alt={vol.org} className="w-12 h-12 sm:w-14 sm:h-14 object-contain rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 self-start" />
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="font-semibold text-base sm:text-lg">{vol.title}</span>
-                    <span className="text-xs px-2 py-0.5 rounded bg-slate-100 border border-slate-200 ml-2">{vol.org}</span>
+                    <span className="font-semibold text-base sm:text-lg text-slate-900 dark:text-slate-100">{vol.title}</span>
+                    <span className="text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 ml-2 text-slate-700 dark:text-slate-300">{vol.org}</span>
                   </div>
-                  <div className="text-xs text-slate-500 mb-2 flex flex-wrap gap-2 sm:gap-4">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mb-2 flex flex-wrap gap-2 sm:gap-4">
                     <span className="flex items-center gap-1">
                       <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -1339,7 +1350,7 @@ SEE ALSO
                       {vol.period}
                     </span>
                   </div>
-                  <ul className="list-disc list-inside text-sm text-slate-700 space-y-1">
+                  <ul className="list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1">
                     {vol.bullets.map((b, i) => <li key={i}>{b}</li>)}
                   </ul>
                 </div>
@@ -1352,38 +1363,38 @@ SEE ALSO
       {/* Contact Section */}
       <section 
         id="contact" 
-        className="min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 bg-white"
+        className="min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900"
       >
         <div className="w-full max-w-5xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-slate-900">CONTACT</h2>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-slate-900 dark:text-slate-100">CONTACT</h2>
           
           {/* Simple Contact Form */}
           <div className="p-6 sm:p-8">
             <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-4">Let's Connect</h3>
-              <p className="text-slate-600 text-sm">Available daily from 5:00 PM - 11:00 PM (UTC+7)</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Let's Connect</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-sm">Available daily from 5:00 PM - 11:00 PM (UTC+7)</p>
             </div>
             
             {/* Meeting Scheduler */}
-            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-slate-50">
-              <h4 className="text-base sm:text-lg font-medium text-slate-900 mb-4 text-center">Schedule a Meeting</h4>
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+              <h4 className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-100 mb-4 text-center">Schedule a Meeting</h4>
               
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-slate-700 text-sm mb-2">Date</label>
+                  <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Date</label>
                   <input 
                     type="date" 
                     id="meetingDate"
-                    className="w-full bg-white border border-slate-300 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all duration-200"
+                    className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                     min={new Date().toISOString().split('T')[0]}
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-slate-700 text-sm mb-2">Time</label>
+                  <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Time</label>
                   <select 
                     id="meetingTime"
-                    className="w-full bg-white border border-slate-300 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all duration-200"
+                    className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                   >
                     <option value="">Select time</option>
                     <option value="17:00">5:00 PM - 6:00 PM</option>
@@ -1398,10 +1409,10 @@ SEE ALSO
               </div>
               
               <div className="mt-4">
-                <label className="block text-slate-700 text-sm mb-2">Meeting Type</label>
+                <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Meeting Type</label>
                 <select 
                   id="meetingType"
-                  className="w-full bg-white border border-slate-300 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all duration-200"
+                  className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                 >
                   <option value="">Select meeting type</option>
                   <option value="project">Project Discussion</option>
@@ -1440,14 +1451,14 @@ SEE ALSO
                     
                     window.open(calendarUrl, '_blank');
                   }}
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-900 px-6 sm:px-8 py-2 sm:py-3 font-medium transition-all duration-200"
+                  className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-6 sm:px-8 py-2 sm:py-3 font-medium transition-all duration-200"
                 >
                   Schedule Meeting
                 </button>
               </div>
               
               <div className="mt-4 text-center">
-                <p className="text-slate-500 text-xs">Weekdays only • Google Meet included • 1 hour duration</p>
+                <p className="text-slate-500 dark:text-slate-400 text-xs">Weekdays only • Google Meet included • 1 hour duration</p>
               </div>
             </div>
             
@@ -1457,7 +1468,7 @@ SEE ALSO
                 href="https://github.com/L1M1N4L" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 bg-slate-100 hover:bg-slate-200 text-slate-900 px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-200"
+                className="flex items-center justify-center gap-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-200"
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.239 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -1465,7 +1476,7 @@ SEE ALSO
                 <span>GitHub</span>
               </a>
               
-              <span className="flex items-center justify-center gap-3 bg-slate-50 text-slate-600 px-4 sm:px-6 py-3 sm:py-4 rounded-lg">
+              <span className="flex items-center justify-center gap-3 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 px-4 sm:px-6 py-3 sm:py-4 rounded-lg">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
                 </svg>
@@ -1475,10 +1486,10 @@ SEE ALSO
             
             {/* Simple Message */}
             <div className="text-center">
-              <p className="text-slate-600 text-sm mb-4">
+              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                 Feel free to reach out for collaborations, technical discussions, or just to say hello!
               </p>
-              <p className="text-slate-500 text-xs">
+              <p className="text-slate-500 dark:text-slate-500 text-xs">
                 Languages: English, Chinese, Indonesian, Japanese
               </p>
             </div>
@@ -1487,7 +1498,7 @@ SEE ALSO
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-200 text-center text-xs text-slate-500 bg-white">
+      <footer className="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
         &copy; {new Date().getFullYear()} L1M1N4L. All rights reserved.
       </footer>
     </div>
