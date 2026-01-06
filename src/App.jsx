@@ -19,14 +19,14 @@ import sheCodesLogo from './assets/experience_logo/Shecodes_logo.png';
 // SVG Logo Component with Cover Corp style
 const CoverCorpLogo = () => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="48" height="48" rx="12" fill="url(#logoGradient)"/>
+    <rect width="48" height="48" rx="12" fill="url(#logoGradient)" />
     <defs>
       <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#4ECDC4"/>
-        <stop offset="100%" stopColor="#44A08D"/>
+        <stop offset="0%" stopColor="#4ECDC4" />
+        <stop offset="100%" stopColor="#44A08D" />
       </linearGradient>
     </defs>
-    <circle cx="24" cy="24" r="8" fill="white" opacity="0.9"/>
+    <circle cx="24" cy="24" r="8" fill="white" opacity="0.9" />
     <text x="50%" y="54%" textAnchor="middle" fill="white" fontSize="10" fontFamily="Arial, sans-serif" dy=".3em" fontWeight="bold">L</text>
   </svg>
 );
@@ -549,7 +549,7 @@ const App = () => {
   const processCommand = (command) => {
     const cmd = command.trim().toLowerCase();
     const foundCommand = TERMINAL_COMMANDS.find(c => c.prompt.toLowerCase() === cmd);
-    
+
     if (foundCommand) {
       return {
         prompt: command,
@@ -557,7 +557,7 @@ const App = () => {
         sub: foundCommand.sub
       };
     }
-    
+
     // Handle ls -la for hidden files easter egg
     if (cmd === 'ls -la' || cmd === 'ls -a') {
       return {
@@ -566,7 +566,7 @@ const App = () => {
         sub: 'Hidden files revealed! 🕵️'
       };
     }
-    
+
     // Handle background cycling commands
     if (cmd === 'bg' || cmd === 'background') {
       const nextIndex = (currentBgIndex + 1) % heroBackgrounds.length;
@@ -578,11 +578,11 @@ const App = () => {
         sub: `Background ${nextIndex + 1}/${heroBackgrounds.length}`
       };
     }
-    
+
     // Handle man command for any command
     if (cmd.startsWith('man ')) {
       const commandName = cmd.split(' ')[1];
-      
+
       if (commandName === 'bg' || commandName === 'background') {
         const bgNames = ['Anime Landscape', 'Cyberpunk City', 'Space Nebula', 'Mountain View', 'Blurred Mountains'];
         return {
@@ -609,7 +609,7 @@ SEE ALSO
           sub: ''
         };
       }
-      
+
       if (commandName === 'help') {
         return {
           prompt: command,
@@ -632,7 +632,7 @@ SEE ALSO
           sub: ''
         };
       }
-      
+
       if (commandName === 'clear') {
         return {
           prompt: command,
@@ -655,19 +655,19 @@ SEE ALSO
           sub: ''
         };
       }
-      
+
       return {
         prompt: command,
         output: `No manual entry for ${commandName}`,
         sub: 'Try: help'
       };
     }
-    
+
     // Handle unknown commands
     if (cmd === 'clear') {
       return { prompt: command, output: '', sub: '', clear: true };
     }
-    
+
     if (cmd === 'help') {
       return {
         prompt: command,
@@ -675,7 +675,7 @@ SEE ALSO
         sub: ''
       };
     }
-    
+
     // Handle background cycling and direct selection
     if (cmd.startsWith('bg')) {
       const parts = cmd.split(' ');
@@ -712,7 +712,7 @@ SEE ALSO
         };
       }
     }
-    
+
     return {
       prompt: command,
       output: `Command not found: ${command}. Type 'help' for available commands.`,
@@ -725,15 +725,15 @@ SEE ALSO
     if (e.key === 'Enter') {
       e.preventDefault();
       if (!userInput.trim()) return;
-      
+
       const result = processCommand(userInput);
-      
+
       if (result.clear) {
         setCommandHistory([]);
       } else {
         setCommandHistory(prev => [...prev, result]);
       }
-      
+
       setUserInput('');
       setHistoryIndex(-1);
     } else if (e.key === 'ArrowUp') {
@@ -776,7 +776,7 @@ SEE ALSO
   }, [loading, bootIndex]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-mono">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#18191c] text-slate-900 dark:text-slate-100 font-mono">
       {/* Loader Overlay */}
       {loaderVisible && (
         <div className={`fixed inset-0 z-50 flex flex-col items-start justify-center bg-black transition-opacity duration-500 px-8 sm:px-24 ${loading ? 'opacity-100' : 'opacity-0'}`}>
@@ -794,11 +794,10 @@ SEE ALSO
       )}
       {/* Sticky Header */}
       <header
-        className={`w-full top-0 left-0 z-30 transition-all duration-300 ${
-          scrolled
-            ? 'fixed bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-slate-900/80'
-            : 'fixed bg-transparent border-b border-transparent'
-        }`}
+        className={`w-full top-0 left-0 z-30 transition-all duration-300 ${scrolled
+          ? 'fixed bg-white/90 dark:bg-[#18191c]/95 border-b border-slate-200 dark:border-[#2d2f34] shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-[#18191c]/90'
+          : 'fixed bg-transparent border-b border-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4 sm:py-6">
           <h1 className="text-xl sm:text-2xl font-bold tracking-widest">
@@ -809,7 +808,7 @@ SEE ALSO
               L1M1N4L
             </a>
           </h1>
-          
+
           <div className="hidden md:flex items-center gap-4">
             {/* Desktop Navigation */}
             <nav className="flex items-center">
@@ -834,54 +833,53 @@ SEE ALSO
                 ))}
               </MagicArea>
             </nav>
-            
+
             {/* Theme Toggle - Far Right */}
             <div className="flex items-center">
               <ThemeToggle className={scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'} />
             </div>
           </div>
-          
+
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle className={scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'} />
             <button
-              className={`p-2 rounded-lg transition-all duration-200  ${
-                scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'
-              }`}
+              className={`p-2 rounded-lg transition-all duration-200  ${scrolled ? 'text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'
+                }`}
               onClick={() => {
-              const mobileMenu = document.getElementById('mobile-menu');
-              if (mobileMenu) {
-                if (mobileMenu.classList.contains('hidden')) {
-                  // Show menu with animation
-                  mobileMenu.classList.remove('hidden');
-                  setTimeout(() => {
-                    mobileMenu.style.maxHeight = '400px';
-                    mobileMenu.style.opacity = '1';
-                  }, 10);
-                } else {
-                  // Hide menu with animation
-                  mobileMenu.style.maxHeight = '0px';
-                  mobileMenu.style.opacity = '0';
-                  setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                  }, 300);
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) {
+                  if (mobileMenu.classList.contains('hidden')) {
+                    // Show menu with animation
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                      mobileMenu.style.maxHeight = '400px';
+                      mobileMenu.style.opacity = '1';
+                    }, 10);
+                  } else {
+                    // Hide menu with animation
+                    mobileMenu.style.maxHeight = '0px';
+                    mobileMenu.style.opacity = '0';
+                    setTimeout(() => {
+                      mobileMenu.classList.add('hidden');
+                    }, 300);
+                  }
                 }
-              }
-            }}
-            aria-label="Toggle mobile menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+              }}
+              aria-label="Toggle mobile menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation Menu */}
-        <div 
-          id="mobile-menu" 
-          className="hidden md:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 transform transition-all duration-300 ease-in-out origin-top"
-          style={{maxHeight: '0px', opacity: '0', overflow: 'hidden'}}
+        <div
+          id="mobile-menu"
+          className="hidden md:hidden bg-white/95 dark:bg-[#18191c]/95 backdrop-blur-sm border-b border-slate-200 dark:border-[#2d2f34] transform transition-all duration-300 ease-in-out origin-top"
+          style={{ maxHeight: '0px', opacity: '0', overflow: 'hidden' }}
         >
           <div className="px-4 py-2 space-y-1">
             {NAV_LINKS.map((link) => (
@@ -916,7 +914,7 @@ SEE ALSO
       {/* Home Section (Fullscreen Terminal/OS style hero with anime background) */}
       <section
         id="home"
-        className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-0 bg-white relative"
+        className="snap-section min-h-screen flex flex-col items-center justify-center text-center px-4 py-0 bg-white relative"
         style={{
           backgroundImage: `url(${heroBackgrounds[currentBgIndex]})`,
           backgroundSize: 'cover',
@@ -925,7 +923,7 @@ SEE ALSO
         }}
       >
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" style={{zIndex: 1}} />
+        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" style={{ zIndex: 1 }} />
         <div className="w-full flex flex-col items-center justify-center relative z-10">
           <div
             className={`w-full max-w-sm sm:max-w-md lg:max-w-xl rounded-xl shadow-lg p-0 mb-6 sm:mb-10 font-mono text-left relative overflow-hidden group ${currentTheme.bg}`}
@@ -939,7 +937,7 @@ SEE ALSO
               {/* Interaction Mode toggle */}
               <button
                 className={`ml-auto text-xs px-2 sm:px-3 py-1 rounded border transition ${currentTheme.buttonBg} ${currentTheme.buttonBorder} ${currentTheme.buttonHover} ${currentTheme.text}`}
-                style={{fontFamily: 'inherit'}}
+                style={{ fontFamily: 'inherit' }}
                 onClick={() => setInteractiveMode(!interactiveMode)}
                 title={interactiveMode ? "Exit interaction mode" : "Enter interaction mode"}
               >
@@ -975,7 +973,7 @@ SEE ALSO
                       )}
                     </div>
                   ))}
-                  
+
                   {/* Current Input */}
                   <div className="flex items-center">
                     <span className="text-green-300 text-xs sm:text-sm select-none">l1m1n4l@portfolio:~$ </span>
@@ -995,7 +993,7 @@ SEE ALSO
           </div>
           <a href="#portfolio" className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-slate-800 text-green-300 font-mono text-xs sm:text-sm tracking-wider rounded border border-slate-700 hover:bg-slate-700 hover:text-green-200 transition-all duration-200 shadow-md">$ view_my_portfolio</a>
         </div>
-        
+
         {/* Settings Button */}
         <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20">
           <button
@@ -1008,10 +1006,10 @@ SEE ALSO
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </button>
-          
+
           {/* Settings Modal */}
           {showSettings && (
-            <div 
+            <div
               className="absolute bottom-16 right-0 bg-slate-800/95 border border-slate-700 rounded-lg p-3 sm:p-4 backdrop-blur-sm min-w-48 sm:min-w-56 shadow-xl transform transition-all duration-300 ease-out origin-bottom-right"
               style={{
                 animation: 'modalSlideIn 0.3s ease-out'
@@ -1029,17 +1027,16 @@ SEE ALSO
                     </svg>
                   </button>
                 </div>
-                
+
                 <div className="space-y-2 sm:space-y-3">
                   {Object.entries(terminalThemes).map(([themeName], index) => (
                     <button
                       key={themeName}
                       onClick={() => setTerminalTheme(themeName)}
-                      className={`w-full flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 transform  ${
-                        terminalTheme === themeName
-                          ? 'border-green-500 bg-green-500/10'
-                          : 'border-slate-600 hover:border-slate-500 hover:bg-slate-700/50'
-                      }`}
+                      className={`w-full flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 transform  ${terminalTheme === themeName
+                        ? 'border-green-500 bg-green-500/10'
+                        : 'border-slate-600 hover:border-slate-500 hover:bg-slate-700/50'
+                        }`}
                       style={{
                         animationDelay: `${index * 50}ms`,
                         animation: 'themeOptionSlideIn 0.3s ease-out forwards'
@@ -1051,9 +1048,8 @@ SEE ALSO
                           <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${themeName === 'dracula' ? 'bg-blue-500' : themeName === 'gruvbox' ? 'bg-yellow-500' : themeName === 'monokai' ? 'bg-orange-500' : themeName === 'nord' ? 'bg-cyan-500' : 'bg-slate-400'}`}></div>
                           <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${themeName === 'dracula' ? 'bg-green-500' : themeName === 'gruvbox' ? 'bg-red-500' : themeName === 'monokai' ? 'bg-yellow-500' : themeName === 'nord' ? 'bg-indigo-500' : 'bg-slate-300'}`}></div>
                         </div>
-                        <span className={`text-xs sm:text-sm font-medium capitalize transition-all duration-200 ${
-                          terminalTheme === themeName ? 'text-green-400' : 'text-slate-300'
-                        }`}>
+                        <span className={`text-xs sm:text-sm font-medium capitalize transition-all duration-200 ${terminalTheme === themeName ? 'text-green-400' : 'text-slate-300'
+                          }`}>
                           {themeName}
                         </span>
                       </div>
@@ -1077,7 +1073,7 @@ SEE ALSO
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                     </button>
                     <div className={`w-24 h-16 sm:w-32 sm:h-20 rounded border-2 transition-all duration-200 overflow-hidden flex items-center justify-center ${'border-green-400 ring-2 ring-green-300 scale-105'}`}
-                      style={{background: `url(${heroBackgrounds[currentBgIndex]}) center/cover no-repeat`}}
+                      style={{ background: `url(${heroBackgrounds[currentBgIndex]}) center/cover no-repeat` }}
                     >
                       <span className="sr-only">Current background</span>
                     </div>
@@ -1098,7 +1094,7 @@ SEE ALSO
       </section>
 
       {/* Professional Experience Section */}
-      <section id="experience" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <section id="experience" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PROFESSIONAL EXPERIENCE</h2>
           <div className="space-y-8 sm:space-y-10">
@@ -1138,10 +1134,10 @@ SEE ALSO
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <section id="portfolio" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">PORTFOLIO</h2>
-          
+
           {/* Projects Subsection */}
           <div className="mb-16 sm:mb-20">
             <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-700 dark:text-slate-300">PROJECTS</h3>
@@ -1222,18 +1218,18 @@ SEE ALSO
       </section>
 
       {/* Writings Section */}
-      <section id="writings" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <section id="writings" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold tracking-widest">WRITINGS</h2>
-            <Link 
-              to="/writings" 
+            <Link
+              to="/writings"
               className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
             >
               View All →
             </Link>
           </div>
-          
+
           <ul className="space-y-6 sm:space-y-8">
             {featuredWritings.map((w, idx) => (
               <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
@@ -1255,10 +1251,10 @@ SEE ALSO
               </li>
             ))}
           </ul>
-          
+
           <div className="mt-4">
-            <Link 
-              to="/writings" 
+            <Link
+              to="/writings"
               className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
             >
               View all writings →
@@ -1268,18 +1264,18 @@ SEE ALSO
       </section>
 
       {/* Talks Section */}
-      <section id="talks" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <section id="talks" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold tracking-widest">TALKS & PRESENTATIONS</h2>
-            <Link 
-              to="/talks" 
+            <Link
+              to="/talks"
               className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
             >
               View All →
             </Link>
           </div>
-          
+
           <ul className="space-y-6 sm:space-y-8">
             {featuredTalks.map((talk, idx) => (
               <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
@@ -1287,11 +1283,10 @@ SEE ALSO
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{talk.title}</h3>
-                      <span className={`px-2 py-1 text-xs rounded border font-medium ${
-                        talk.type === 'Workshop' 
-                          ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800' 
-                          : 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800'
-                      }`}>
+                      <span className={`px-2 py-1 text-xs rounded border font-medium ${talk.type === 'Workshop'
+                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
+                        : 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800'
+                        }`}>
                         {talk.type}
                       </span>
                     </div>
@@ -1317,10 +1312,10 @@ SEE ALSO
               </li>
             ))}
           </ul>
-          
+
           <div className="mt-4">
-            <Link 
-              to="/talks" 
+            <Link
+              to="/talks"
               className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
             >
               View all talks →
@@ -1330,7 +1325,7 @@ SEE ALSO
       </section>
 
       {/* Volunteering Section */}
-      <section id="volunteering" className="py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <section id="volunteering" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10">VOLUNTEERING</h2>
           <div className="space-y-8 sm:space-y-10">
@@ -1361,38 +1356,38 @@ SEE ALSO
       </section>
 
       {/* Contact Section */}
-      <section 
-        id="contact" 
-        className="min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900"
+      <section
+        id="contact"
+        className="snap-section min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]"
       >
         <div className="w-full max-w-5xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-slate-900 dark:text-slate-100">CONTACT</h2>
-          
+
           {/* Simple Contact Form */}
           <div className="p-6 sm:p-8">
             <div className="text-center mb-6 sm:mb-8">
               <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Let's Connect</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm">Available daily from 5:00 PM - 11:00 PM (UTC+7)</p>
             </div>
-            
+
             {/* Meeting Scheduler */}
             <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
               <h4 className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-100 mb-4 text-center">Schedule a Meeting</h4>
-              
+
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Date</label>
-                  <input 
-                    type="date" 
+                  <input
+                    type="date"
                     id="meetingDate"
                     className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                     min={new Date().toISOString().split('T')[0]}
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Time</label>
-                  <select 
+                  <select
                     id="meetingTime"
                     className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                   >
@@ -1407,10 +1402,10 @@ SEE ALSO
                   </select>
                 </div>
               </div>
-              
+
               <div className="mt-4">
                 <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Meeting Type</label>
-                <select 
+                <select
                   id="meetingType"
                   className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
                 >
@@ -1422,19 +1417,19 @@ SEE ALSO
                   <option value="other">Other</option>
                 </select>
               </div>
-              
+
               <div className="mt-6 text-center">
-                <button 
+                <button
                   onClick={() => {
                     const date = document.getElementById('meetingDate').value;
                     const time = document.getElementById('meetingTime').value;
                     const type = document.getElementById('meetingType').value;
-                    
+
                     if (!date || !time || !type) {
                       alert('Please fill in all fields');
                       return;
                     }
-                    
+
                     // Check if it's a weekday
                     const selectedDate = new Date(date);
                     const dayOfWeek = selectedDate.getDay();
@@ -1442,13 +1437,13 @@ SEE ALSO
                       alert('Meetings are only available on weekdays (Monday-Friday)');
                       return;
                     }
-                    
+
                     // Create Google Calendar event
                     const eventDate = new Date(`${date}T${time}:00`);
                     const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1 hour later
-                    
+
                     const calendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Meeting+with+L1M1N4L+-+${encodeURIComponent(type)}&dates=${eventDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&details=Meeting+with+L1M1N4L%0A%0AMeeting+Type:+${encodeURIComponent(type)}%0A%0APlease+join+via+Google+Meet&location=Google+Meet&add=your.email%40example.com`;
-                    
+
                     window.open(calendarUrl, '_blank');
                   }}
                   className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-6 sm:px-8 py-2 sm:py-3 font-medium transition-all duration-200"
@@ -1456,34 +1451,34 @@ SEE ALSO
                   Schedule Meeting
                 </button>
               </div>
-              
+
               <div className="mt-4 text-center">
                 <p className="text-slate-500 dark:text-slate-400 text-xs">Weekdays only • Google Meet included • 1 hour duration</p>
               </div>
             </div>
-            
+
             {/* Quick Contact Links */}
             <div className="grid gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <a 
-                href="https://github.com/L1M1N4L" 
-                target="_blank" 
+              <a
+                href="https://github.com/L1M1N4L"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-200"
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.239 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.239 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
                 <span>GitHub</span>
               </a>
-              
+
               <span className="flex items-center justify-center gap-3 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 px-4 sm:px-6 py-3 sm:py-4 rounded-lg">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
                 </svg>
                 <span>Discord: m.liminal</span>
               </span>
             </div>
-            
+
             {/* Simple Message */}
             <div className="text-center">
               <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
@@ -1498,7 +1493,7 @@ SEE ALSO
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900">
+      <footer className="py-8 border-t border-slate-200 dark:border-[#2d2f34] text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-[#18191c]">
         &copy; {new Date().getFullYear()} L1M1N4L. All rights reserved.
       </footer>
     </div>
