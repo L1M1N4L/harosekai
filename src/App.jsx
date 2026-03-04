@@ -9,11 +9,12 @@ import mountainRetreat from './assets/kyoto_kyomizu.jpg';
 import officeAtNight from './assets/meow.jpg';
 import transTelLogo from './assets/experience_logo/TransTel-03.png';
 import googleLogo from './assets/experience_logo/sq-google-g-logo-update_dezeen_2364_col_0-852x852.png';
-import zioncomLogo from './assets/experience_logo/logo_zioncom.png';
+import hikvisionLogo from './assets/experience_logo/hikvision.png';
 import binusLogo from './assets/experience_logo/-Binus-University-Bina-Nusanta_logo.webp';
 import binusAsoLogo from './assets/experience_logo/Logo-Binus-aso.png';
 import gdscLogo from './assets/experience_logo/gdg_logo.png';
 import sheCodesLogo from './assets/experience_logo/Shecodes_logo.png';
+import cognitiveAiPaper from './assets/cognitive_ai_paper.pdf';
 // import semestaMedikaLogo from './assets/experience_logo/logo_semesta_medika.png';
 
 // SVG Logo Component with Cover Corp style
@@ -32,6 +33,12 @@ const CoverCorpLogo = () => (
 );
 
 const projects = [
+  {
+    title: 'Cognitive AI Approaches to Adaptive Scheduling in Braille Memory Retention',
+    description: 'Designed and evaluated a hybrid SM-2 + ML scheduling algorithm, benchmarking long-term retention, review efficiency, and system cost across a 365-day simulation. Demonstrates interpretable AI integration into adaptive learning systems.',
+    tech: ['Python', 'Machine Learning', 'Adaptive Algorithms', 'Cognitive Science'],
+    link: cognitiveAiPaper,
+  },
   {
     title: 'LOKS: Custom Scripting Language and Toolchain',
     description: 'Developed an interpreter, compiler, and code editor for LOKS, a dynamically typed, imperative scripting language designed for education and experimentation in compiler theory.',
@@ -107,6 +114,17 @@ const featuredWritings = [
 
 const featuredTalks = [
   {
+    title: 'JuaraGCP: Vertex AI Study Jam',
+    event: 'GDG on Campus Binus University International',
+    date: 'Jan 2026',
+    type: 'Workshop',
+    description: 'Hands-on workshop exploring Google Cloud\'s Vertex AI features, empowering participants to build and deploy ML models.',
+    attendees: '84+',
+    slides: null,
+    recording: null,
+    eventPage: 'https://gdg.community.dev/events/details/google-gdg-on-campus-binus-university-international-jakarta-indonesia-presents-juaragcp-vertex-ai-study-jam/',
+  },
+  {
     title: 'Beyond REST: Exploring Modern API Protocols',
     event: 'GDGoC Talk Series #3',
     date: 'July 2025',
@@ -135,34 +153,36 @@ const experience = [
     company: 'TRANSTEL COMMUNICATIONS PVT. LTD.',
     type: 'Contract',
     location: 'Florida, USA',
-    period: 'Jun 2023 – Present',
+    period: 'Jun 2022 – Present',
     image: transTelLogo,
     bullets: [
-      'Built a PBX billing system (Java Swing + WebSocket + Python) reducing manual processing time by ~40% and improving accuracy.',
-      'Converted static site to dynamic platform and added a messaging system, leading to ~3× increase in customer inquiries and higher engagement.'
+      'Engineered performance-critical data parsers and migrated legacy serial I/O systems to TCP/IP-based communication, improving throughput by 43% and reducing processing overhead by 40%.',
+      'Rebuilt and architected the company website into a scalable, dynamic platform, improving customer interaction flows and resulting in a 3× increase in sales click-throughs.',
+      'Collaborated with global stakeholders to translate business requirements into scalable technology solutions, ensuring alignment with strategic objectives.'
     ]
   },
   {
     title: 'Community Organizer',
-    company: 'Google',
+    company: 'Google for Developers',
     type: 'Contract',
-    period: 'Oct 2024 – Present',
-    location: null,
+    period: 'Sep 2024 – Present',
+    location: 'Singapore, Singapore',
     image: googleLogo,
     bullets: [
-      'Delivered large-scale developer events and hackathons, engaging 1,000+ students across Indonesia in hands-on learning.',
-      'Promoted Google technologies (Cloud, Gemini, Flutter) through workshops and community programs.'
+      'Spearheaded regional Developer Relations execution across APAC, supporting flagship programs such as DevFest and IOX, and kickstarting Google Summer of Code (GSoC) initiatives.',
+      'Delivered large-scale developer events and hackathons, engaging 1,000+ students across Asia Pacific in hands-on learning.',
+      'Championed adoption of Google technologies (Cloud, Gemini, Flutter) through high-impact workshops and community programs, fostering a thriving developer ecosystem.'
     ]
   },
   {
     title: 'Software Engineer Intern',
-    company: 'ZIONCOM TECHNOLOGY',
-    location: 'Jakarta, Indonesia',
+    company: 'Hikvision',
+    location: '广州, 中国',
     period: 'Mar 2023 – Jul 2023',
-    image: zioncomLogo,
+    image: hikvisionLogo,
     bullets: [
-      'Achieved ~90% detection accuracy for real-time security monitoring by developing a computer vision people detection system using OpenCV (Python) on embedded devices.',
-      'Integrated ML models, DVR systems, and Arduino into an automated alert pipeline, reducing incident response time by ~35%.'
+      'Engineered a real-time computer vision monitoring system using OpenCV (Python), achieving ~90% detection accuracy on resource-constrained embedded devices.',
+      'Orchestrated the integration of ML models, DVR systems, and Arduino automation into a robust end-to-end alert pipeline, slashing incident response times by 35%.'
     ]
   },
   {
@@ -207,7 +227,7 @@ const experience = [
 
 const volunteering = [
   {
-    title: 'Technical Developer (Past Role)',
+    title: 'Technical Developer',
     org: 'Google Developer Student Clubs (GDSC)',
     period: 'Oct 2023 – Oct 2024',
     image: gdscLogo,
@@ -300,8 +320,8 @@ const NAV_LINKS = [
   { id: 'experience', label: 'EXPERIENCE' },
   { id: 'portfolio', label: 'PORTFOLIO' },
   { id: 'writings', label: 'WRITINGS' },
-  { id: 'talks', label: 'TALKS' },
   { id: 'volunteering', label: 'VOLUNTEERING' },
+  { id: 'talks', label: 'TALKS' },
   { id: 'contact', label: 'CONTACT' },
 ];
 
@@ -313,7 +333,7 @@ const TERMINAL_COMMANDS = [
   },
   {
     prompt: 'experience',
-    output: `Software Engineer @ TransTel Communications, Inc.\n  - Jun 2023–Present\n  Redesigned company website, built PABX interface, VoIP billing\nCommunity Organizer @ Google DevRel\n  - Oct 2024–Present\n  GDG on Campus, workshops, DevRel bridge\nIntern @ Zioncom Technology Ltd\n  - Apr 2023–Jun 2023\n  Real-time people detection, ML, Arduino\nTA @ BINUS University\n  - Aug 2024–Jan 2025\n  Python, data structures, mentoring`,
+    output: `Software Engineer @ TransTel Communications, Inc.\n  - Jun 2023–Present\n  Redesigned company website, built PABX interface, VoIP billing\nCommunity Organizer @ Google DevRel\n  - Oct 2024–Present\n  GDG on Campus, workshops, DevRel bridge\nIntern @ Hikvision\n  - Mar 2023–Jul 2023\n  Real-time people detection, ML, Arduino\nTA @ BINUS University\n  - Aug 2024–Jan 2025\n  Python, data structures, mentoring`,
     sub: '',
   },
   {
@@ -333,7 +353,7 @@ const TERMINAL_COMMANDS = [
   },
   {
     prompt: 'contact',
-    output: `Email: your.email@example.com\nLinkedIn: linkedin.com/in/yourprofile\nGitHub: github.com/L1M1N4L`,
+    output: `Email: your.email@example.com\nLinkedIn: linkedin.com/in/jonathan-leewin\nGoogle Dev Profile: g.dev/l1m1n4l\nGitHub: github.com/L1M1N4L`,
     sub: '',
   },
   {
@@ -369,6 +389,36 @@ const App = () => {
   const [loaderVisible, setLoaderVisible] = useState(true);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllQualifications, setShowAllQualifications] = useState(false);
+  const [time, setTime] = useState(new Date());
+  const [clientName, setClientName] = useState('Unknown Browser');
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080
+  });
+
+  useEffect(() => {
+    // Handle Window Resize
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener('resize', handleResize);
+    // Detect Client Browser on Mount
+    const ua = navigator.userAgent;
+    let browser = "Unknown Client";
+    if (ua.includes('Firefox')) browser = 'Mozilla Firefox';
+    else if (ua.includes('SamsungBrowser')) browser = 'Samsung Internet';
+    else if (ua.includes('Opera') || ua.includes('OPR')) browser = 'Opera';
+    else if (ua.includes('Trident')) browser = 'Internet Explorer';
+    else if (ua.includes('Edge')) browser = 'Microsoft Edge (Legacy)';
+    else if (ua.includes('Edg')) browser = 'Microsoft Edge';
+    else if (ua.includes('Chrome')) browser = 'Google Chrome';
+    else if (ua.includes('Safari')) browser = 'Apple Safari';
+    setClientName(browser);
+
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // Hero background options
   const heroBackgrounds = [
@@ -923,173 +973,141 @@ SEE ALSO
         }}
       >
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" style={{ zIndex: 1 }} />
+        <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-md dark:bg-[#18191c]/80" style={{ zIndex: 1 }} />
         <div className="w-full flex flex-col items-center justify-center relative z-10">
-          <div
-            className={`w-full max-w-sm sm:max-w-md lg:max-w-xl rounded-xl shadow-lg p-0 mb-6 sm:mb-10 font-mono text-left relative overflow-hidden group ${currentTheme.bg}`}
-          >
-            {/* Terminal window bar */}
-            <div className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-t-xl border-b relative ${currentTheme.barBg} ${currentTheme.barBorder}`}>
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-400 inline-block"></span>
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-300 inline-block"></span>
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-400 inline-block"></span>
-              <span className={`ml-2 sm:ml-4 text-xs select-none ${currentTheme.promptText}`}>l1m1n4l@portfolio:~</span>
-              {/* Interaction Mode toggle */}
-              <button
-                className={`ml-auto text-xs px-2 sm:px-3 py-1 rounded border transition ${currentTheme.buttonBg} ${currentTheme.buttonBorder} ${currentTheme.buttonHover} ${currentTheme.text}`}
-                style={{ fontFamily: 'inherit' }}
-                onClick={() => setInteractiveMode(!interactiveMode)}
-                title={interactiveMode ? "Exit interaction mode" : "Enter interaction mode"}
-              >
-                {interactiveMode ? 'Exit Mode' : 'Interaction Mode'}
-              </button>
-            </div>
-            <div className="px-4 sm:px-6 py-4 sm:py-6 max-h-64 sm:max-h-80 lg:max-h-96 overflow-y-scroll scrollbar-hide">
-              {!interactiveMode ? (
-                <>
-                  <div className="text-green-300 text-xs sm:text-sm mb-2 select-none">
-                    l1m1n4l@portfolio:~$ <span className={currentTheme.text}>{typedPrompt}</span>
-                  </div>
-                  {typedOutput && (
-                    <div className="text-base sm:text-lg md:text-2xl font-bold text-slate-100 mb-2 flex items-center">{typedOutput}</div>
-                  )}
-                  {typedLines.filter(line => line && line.className).map((line, i) => (
-                    <div key={i} className={`${line.className} text-xs sm:text-sm`}>{line.text}</div>
-                  ))}
-                </>
-              ) : (
-                <>
-                  {/* Command History */}
-                  {commandHistory.map((cmd, idx) => (
-                    <div key={idx} className="mb-2">
-                      <div className="text-green-300 text-xs sm:text-sm select-none">
-                        l1m1n4l@portfolio:~$ <span className={currentTheme.text}>{cmd.prompt}</span>
-                      </div>
-                      {cmd.output && (
-                        <div className={`${currentTheme.text} text-xs sm:text-sm mt-1 whitespace-pre-line`}>{cmd.output}</div>
-                      )}
-                      {cmd.sub && (
-                        <div className={`${currentTheme.text} text-xs sm:text-sm mt-1 opacity-70`}>{cmd.sub}</div>
-                      )}
-                    </div>
-                  ))}
-
-                  {/* Current Input */}
-                  <div className="flex items-center">
-                    <span className="text-green-300 text-xs sm:text-sm select-none">l1m1n4l@portfolio:~$ </span>
-                    <input
-                      type="text"
-                      value={userInput}
-                      onChange={(e) => setUserInput(e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      className={`flex-1 bg-transparent text-xs sm:text-sm outline-none border-none ml-1 placeholder-slate-500 ${currentTheme.text}`}
-                      placeholder="Type 'help' for available commands"
-                      autoFocus
-                    />
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-          <a href="#portfolio" className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-slate-800 text-green-300 font-mono text-xs sm:text-sm tracking-wider rounded border border-slate-700 hover:bg-slate-700 hover:text-green-200 transition-all duration-200 shadow-md">$ view_my_portfolio</a>
-        </div>
-
-        {/* Settings Button */}
-        <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20">
-          <button
-            onClick={() => setShowSettings(!showSettings)}
-            className="p-2 sm:p-3 bg-slate-800 text-slate-300 rounded-lg border border-slate-700 hover:bg-slate-700 transition-all duration-200 hover:scale-110 transform"
-            title="Settings"
-          >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
-
-          {/* Settings Modal */}
-          {showSettings && (
+          <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl mb-6 sm:mb-10">
             <div
-              className="absolute bottom-16 right-0 bg-slate-800/95 border border-slate-700 rounded-lg p-3 sm:p-4 backdrop-blur-sm min-w-48 sm:min-w-56 shadow-xl transform transition-all duration-300 ease-out origin-bottom-right"
-              style={{
-                animation: 'modalSlideIn 0.3s ease-out'
-              }}
+              className={`w-full rounded-xl shadow-lg p-0 font-mono text-left relative overflow-hidden group ${currentTheme.bg}`}
             >
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-700 pb-2">
-                  <h3 className="text-slate-200 font-semibold text-xs sm:text-sm">Terminal Theme</h3>
-                  <button
-                    onClick={() => setShowSettings(false)}
-                    className="text-slate-400 hover:text-slate-200 transition-all duration-200 hover:scale-110 transform"
-                  >
-                    <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
+              {/* Terminal window bar */}
+              <div className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-t-xl border-b relative ${currentTheme.barBg} ${currentTheme.barBorder}`}>
+                <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-400 inline-block"></span>
+                <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-300 inline-block"></span>
+                <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-400 inline-block"></span>
+                <span className={`ml-2 sm:ml-4 text-xs select-none ${currentTheme.promptText}`}>l1m1n4l@portfolio:~</span>
+                {/* Interaction Mode toggle */}
+                <button
+                  className={`ml-auto text-xs px-2 sm:px-3 py-1 rounded border transition ${currentTheme.buttonBg} ${currentTheme.buttonBorder} ${currentTheme.buttonHover} ${currentTheme.text}`}
+                  style={{ fontFamily: 'inherit' }}
+                  onClick={() => setInteractiveMode(!interactiveMode)}
+                  title={interactiveMode ? "Exit interaction mode" : "Enter interaction mode"}
+                >
+                  {interactiveMode ? 'Exit Mode' : 'Interaction Mode'}
+                </button>
+                {/* Settings Dropdown Button */}
+                <button
+                  onClick={() => setShowSettings(!showSettings)}
+                  className={`text-xs px-2 py-1.5 rounded border transition ${currentTheme.buttonBg} ${currentTheme.buttonBorder} ${currentTheme.buttonHover} ${currentTheme.text}`}
+                  title="Terminal Settings"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </button>
+              </div>
 
-                <div className="space-y-2 sm:space-y-3">
-                  {Object.entries(terminalThemes).map(([themeName], index) => (
-                    <button
-                      key={themeName}
-                      onClick={() => setTerminalTheme(themeName)}
-                      className={`w-full flex items-center justify-between p-2 sm:p-3 rounded-lg border transition-all duration-200 transform  ${terminalTheme === themeName
-                        ? 'border-green-500 bg-green-500/10'
-                        : 'border-slate-600 hover:border-slate-500 hover:bg-slate-700/50'
-                        }`}
-                      style={{
-                        animationDelay: `${index * 50}ms`,
-                        animation: 'themeOptionSlideIn 0.3s ease-out forwards'
-                      }}
-                    >
-                      <div className="flex items-center space-x-2 sm:space-x-3">
-                        <div className="flex space-x-1">
-                          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${themeName === 'dracula' ? 'bg-purple-500' : themeName === 'gruvbox' ? 'bg-green-500' : themeName === 'monokai' ? 'bg-pink-500' : themeName === 'nord' ? 'bg-blue-500' : 'bg-slate-500'}`}></div>
-                          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${themeName === 'dracula' ? 'bg-blue-500' : themeName === 'gruvbox' ? 'bg-yellow-500' : themeName === 'monokai' ? 'bg-orange-500' : themeName === 'nord' ? 'bg-cyan-500' : 'bg-slate-400'}`}></div>
-                          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${themeName === 'dracula' ? 'bg-green-500' : themeName === 'gruvbox' ? 'bg-red-500' : themeName === 'monokai' ? 'bg-yellow-500' : themeName === 'nord' ? 'bg-indigo-500' : 'bg-slate-300'}`}></div>
-                        </div>
-                        <span className={`text-xs sm:text-sm font-medium capitalize transition-all duration-200 ${terminalTheme === themeName ? 'text-green-400' : 'text-slate-300'
-                          }`}>
-                          {themeName}
-                        </span>
-                      </div>
-                      {terminalTheme === themeName && (
-                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 transition-all duration-200 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                    </button>
-                  ))}
-                </div>
-                {/* Background Selector */}
-                <div className="mt-4 flex flex-col items-center">
-                  <h4 className="text-slate-200 font-semibold text-xs sm:text-sm mb-2">Homepage Background</h4>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setCurrentBgIndex((currentBgIndex - 1 + heroBackgrounds.length) % heroBackgrounds.length)}
-                      className="p-1 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-200 disabled:opacity-50"
-                      aria-label="Previous background"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                    </button>
-                    <div className={`w-24 h-16 sm:w-32 sm:h-20 rounded border-2 transition-all duration-200 overflow-hidden flex items-center justify-center ${'border-green-400 ring-2 ring-green-300 scale-105'}`}
-                      style={{ background: `url(${heroBackgrounds[currentBgIndex]}) center/cover no-repeat` }}
-                    >
-                      <span className="sr-only">Current background</span>
+              <div className="px-4 sm:px-6 py-4 sm:py-6 min-h-[16rem] max-h-64 sm:max-h-80 lg:max-h-96 overflow-y-scroll scrollbar-hide relative">
+
+                {/* Regular Terminal Interfaces */}
+                {!interactiveMode ? (
+                  <>
+                    <div className="text-green-300 text-xs sm:text-sm mb-2 select-none">
+                      l1m1n4l@portfolio:~$ <span className={currentTheme.text}>{typedPrompt}</span>
                     </div>
-                    <button
-                      onClick={() => setCurrentBgIndex((currentBgIndex + 1) % heroBackgrounds.length)}
-                      className="p-1 rounded-full bg-slate-700 hover:bg-slate-600 text-slate-200 disabled:opacity-50"
-                      aria-label="Next background"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                    {typedOutput && (
+                      <div className="text-base sm:text-lg md:text-2xl font-bold text-slate-100 mb-2 flex items-center">{typedOutput}</div>
+                    )}
+                    {typedLines.filter(line => line && line.className).map((line, i) => (
+                      <div key={i} className={`${line.className} text-xs sm:text-sm`}>{line.text}</div>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    {/* Command History */}
+                    {commandHistory.map((cmd, idx) => (
+                      <div key={idx} className="mb-2">
+                        <div className="text-green-300 text-xs sm:text-sm select-none">
+                          l1m1n4l@portfolio:~$ <span className={currentTheme.text}>{cmd.prompt}</span>
+                        </div>
+                        {cmd.output && (
+                          <div className={`${currentTheme.text} text-xs sm:text-sm mt-1 whitespace-pre-line`}>{cmd.output}</div>
+                        )}
+                        {cmd.sub && (
+                          <div className={`${currentTheme.text} text-xs sm:text-sm mt-1 opacity-70`}>{cmd.sub}</div>
+                        )}
+                      </div>
+                    ))}
+
+                    {/* Current Input */}
+                    <div className="flex items-center">
+                      <span className="text-green-300 text-xs sm:text-sm select-none">l1m1n4l@portfolio:~$ </span>
+                      <input
+                        type="text"
+                        value={userInput}
+                        onChange={(e) => setUserInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        className={`flex-1 bg-transparent text-xs sm:text-sm outline-none border-none ml-1 placeholder-slate-500 ${currentTheme.text}`}
+                        placeholder="Type 'help' for available commands"
+                        autoFocus
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* Sleek Settings Overlay inside Terminal */}
+                <div
+                  className={`absolute inset-0 ${currentTheme.bg.replace('/90', '')}/95 backdrop-blur-md z-20 flex flex-col p-6 transition-all duration-300 ${showSettings ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    }`}
+                >
+                  <div className={`flex items-center justify-between mb-6 pb-2 border-b ${currentTheme.barBorder}`}>
+                    <h3 className={`${currentTheme.text} font-mono text-xs sm:text-sm tracking-widest font-bold`}>SYSTEM SETTINGS</h3>
+                    <button onClick={() => setShowSettings(false)} className={`${currentTheme.promptText} hover:${currentTheme.text.split(' ')[0]} transition-colors hover:rotate-90 transform duration-200`}>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                   </div>
-                  <div className="text-xs text-slate-400 mt-2">{currentBgIndex + 1} / {heroBackgrounds.length}</div>
+
+                  <div className="space-y-6 overflow-y-auto scrollbar-hide flex-1">
+                    {/* Theme */}
+                    <div>
+                      <h4 className={`${currentTheme.promptText} font-mono text-[10px] sm:text-xs tracking-widest mb-3 opacity-80`}>TERMINAL THEME</h4>
+                      <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-sm">
+                        {Object.entries(terminalThemes).map(([themeName]) => (
+                          <button
+                            key={themeName}
+                            onClick={() => setTerminalTheme(themeName)}
+                            className={`flex items-center justify-between px-3 py-2 rounded-lg border transition-all duration-200 ${terminalTheme === themeName
+                              ? 'border-green-500/50 bg-green-500/10 text-green-400 shadow-[inset_0_0_10px_rgba(74,222,128,0.1)]'
+                              : `${currentTheme.barBorder} ${currentTheme.barBg} ${currentTheme.promptText} ${currentTheme.buttonHover} hover:${currentTheme.text.split(' ')[0]}`
+                              }`}
+                          >
+                            <span className="text-xs sm:text-sm font-medium capitalize font-sans">{themeName}</span>
+                            {terminalTheme === themeName && (
+                              <div className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.8)]"></div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Wallpaper */}
+                    <div>
+                      <h4 className={`${currentTheme.promptText} font-mono text-[10px] sm:text-xs tracking-widest mb-3 opacity-80`}>HERO WALLPAPER</h4>
+                      <div className="grid grid-cols-5 gap-2 max-w-sm">
+                        {heroBackgrounds.map((bg, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentBgIndex(idx)}
+                            className={`relative h-12 sm:h-14 rounded-lg border overflow-hidden transition-all duration-200 ${currentBgIndex === idx ? 'border-green-500/70 shadow-[0_0_12px_rgba(74,222,128,0.3)]' : `${currentTheme.barBorder} opacity-60 hover:opacity-100 hover:${currentTheme.buttonBorder}`}`}
+                          >
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }}></div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          )}
+            <a href="#portfolio" className="inline-block mt-4 sm:mt-6 text-slate-300 hover:text-green-300 font-mono text-xs sm:text-sm tracking-widest transition-all duration-200 underline underline-offset-4 decoration-slate-600 hover:decoration-green-400">$ view_my_portfolio</a>
+          </div>
         </div>
       </section>
 
@@ -1263,67 +1281,6 @@ SEE ALSO
         </div>
       </section>
 
-      {/* Talks Section */}
-      <section id="talks" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center justify-between mb-8 sm:mb-10">
-            <h2 className="text-xl sm:text-2xl font-bold tracking-widest">TALKS & PRESENTATIONS</h2>
-            <Link
-              to="/talks"
-              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
-            >
-              View All →
-            </Link>
-          </div>
-
-          <ul className="space-y-6 sm:space-y-8">
-            {featuredTalks.map((talk, idx) => (
-              <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{talk.title}</h3>
-                      <span className={`px-2 py-1 text-xs rounded border font-medium ${talk.type === 'Workshop'
-                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
-                        : 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800'
-                        }`}>
-                        {talk.type}
-                      </span>
-                    </div>
-                    <div className="text-sm text-slate-600 dark:text-slate-400">
-                      <strong>{talk.event}</strong>
-                    </div>
-                    <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-500 mt-2">
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                        </svg>
-                        {talk.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
-                        </svg>
-                        {talk.attendees}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-4">
-            <Link
-              to="/talks"
-              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline"
-            >
-              View all talks →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Volunteering Section */}
       <section id="volunteering" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
         <div className="max-w-5xl mx-auto">
@@ -1355,147 +1312,265 @@ SEE ALSO
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Talks Section */}
+      <section id="talks" className="snap-section py-16 sm:py-24 px-4 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-between mb-8 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-widest text-slate-900 dark:text-slate-100">TALKS</h2>
+            <Link
+              to="/talks"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 underline transition-colors duration-200"
+            >
+              View All →
+            </Link>
+          </div>
+
+          <ul className="space-y-6 sm:space-y-8">
+            {featuredTalks.map((talk, idx) => (
+              <li key={idx} className="border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      {talk.eventPage ? (
+                        <a href={talk.eventPage} className="text-base sm:text-lg font-semibold hover:underline text-slate-900 dark:text-slate-100" target="_blank" rel="noopener noreferrer">{talk.title}</a>
+                      ) : (
+                        <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100">{talk.title}</h3>
+                      )}
+                      {talk.type && (
+                        <span className="px-2 py-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded border border-slate-200 dark:border-slate-700 whitespace-nowrap">
+                          {talk.type}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400 mb-2 font-mono text-[11px] sm:text-xs">
+                      {talk.event} • {talk.date} {talk.attendees && `• ${talk.attendees}`}
+                    </div>
+                    {talk.description && (
+                      <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">{talk.description}</p>
+                    )}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+
+      {/* Contact Section - Modern Minimalist Theme */}
       <section
         id="contact"
-        className="snap-section min-h-screen flex flex-col items-center justify-center px-4 py-0 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c]"
+        className="snap-section min-h-screen flex flex-col items-center justify-center px-4 py-16 sm:py-24 border-t border-slate-100 dark:border-[#2d2f34] bg-white dark:bg-[#18191c] relative overflow-hidden"
       >
-        <div className="w-full max-w-5xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-widest mb-8 sm:mb-10 text-slate-900 dark:text-slate-100">CONTACT</h2>
+        <div className="w-full max-w-5xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-start">
 
-          {/* Simple Contact Form */}
-          <div className="p-6 sm:p-8">
-            <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Let's Connect</h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">Available daily from 5:00 PM - 11:00 PM (UTC+7)</p>
-            </div>
+            {/* Left Column: Info & Text */}
+            <div className="flex-1 space-y-8 w-full">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-widest text-slate-900 dark:text-slate-100 mb-6">LET'S CONNECT.</h2>
+                <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                  I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Whether it's a technical challenge, a product discussion, or just geeking out about audio engineering, I'm just a meeting away.
+                </p>
+              </div>
 
-            {/* Meeting Scheduler */}
-            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
-              <h4 className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-100 mb-4 text-center">Schedule a Meeting</h4>
+              <div className="flex items-center gap-3">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Available from 17:00 - 23:00 (UTC+7) daily</span>
+              </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Date</label>
-                  <input
-                    type="date"
-                    id="meetingDate"
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
-                    min={new Date().toISOString().split('T')[0]}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Time</label>
-                  <select
-                    id="meetingTime"
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
-                  >
-                    <option value="">Select time</option>
-                    <option value="17:00">5:00 PM - 6:00 PM</option>
-                    <option value="17:30">5:30 PM - 6:30 PM</option>
-                    <option value="20:00">8:00 PM - 9:00 PM</option>
-                    <option value="20:30">8:30 PM - 9:30 PM</option>
-                    <option value="21:00">9:00 PM - 10:00 PM</option>
-                    <option value="21:30">9:30 PM - 10:30 PM</option>
-                    <option value="22:00">10:00 PM - 11:00 PM</option>
-                  </select>
+              <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <h3 className="text-sm font-semibold tracking-wider text-slate-900 dark:text-slate-100">SOCIAL PROFILES</h3>
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://github.com/L1M1N4L" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all text-sm font-medium">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                    GitHub
+                  </a>
+                  <a href="https://www.linkedin.com/in/jonathan-leewin" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all text-sm font-medium">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    LinkedIn
+                  </a>
+                  <a href="https://g.dev/l1m1n4l" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition-all text-sm font-medium">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" /></svg>
+                    Google Dev
+                  </a>
                 </div>
               </div>
 
-              <div className="mt-4">
-                <label className="block text-slate-700 dark:text-slate-300 text-sm mb-2">Meeting Type</label>
-                <select
-                  id="meetingType"
-                  className="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 transition-all duration-200"
-                >
-                  <option value="">Select meeting type</option>
-                  <option value="project">Project Discussion</option>
-                  <option value="career">Career Chat</option>
-                  <option value="technical">Technical Deep Dive</option>
-                  <option value="audio">Audio Engineering</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => {
-                    const date = document.getElementById('meetingDate').value;
-                    const time = document.getElementById('meetingTime').value;
-                    const type = document.getElementById('meetingType').value;
-
-                    if (!date || !time || !type) {
-                      alert('Please fill in all fields');
-                      return;
-                    }
-
-                    // Check if it's a weekday
-                    const selectedDate = new Date(date);
-                    const dayOfWeek = selectedDate.getDay();
-                    if (dayOfWeek === 0 || dayOfWeek === 6) {
-                      alert('Meetings are only available on weekdays (Monday-Friday)');
-                      return;
-                    }
-
-                    // Create Google Calendar event
-                    const eventDate = new Date(`${date}T${time}:00`);
-                    const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1 hour later
-
-                    const calendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Meeting+with+L1M1N4L+-+${encodeURIComponent(type)}&dates=${eventDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&details=Meeting+with+L1M1N4L%0A%0AMeeting+Type:+${encodeURIComponent(type)}%0A%0APlease+join+via+Google+Meet&location=Google+Meet&add=your.email%40example.com`;
-
-                    window.open(calendarUrl, '_blank');
-                  }}
-                  className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-6 sm:px-8 py-2 sm:py-3 font-medium transition-all duration-200"
-                >
-                  Schedule Meeting
-                </button>
-              </div>
-
-              <div className="mt-4 text-center">
-                <p className="text-slate-500 dark:text-slate-400 text-xs">Weekdays only • Google Meet included • 1 hour duration</p>
+              <div className="pt-2">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-400">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" /></svg>
+                  Discord: <span className="text-slate-800 dark:text-slate-200 ml-1">m.liminal</span>
+                </span>
               </div>
             </div>
 
-            {/* Quick Contact Links */}
-            <div className="grid gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <a
-                href="https://github.com/L1M1N4L"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 px-4 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-200"
-              >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.239 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                <span>GitHub</span>
-              </a>
+            {/* Right Column: Outline Scheduler Form */}
+            <div className="flex-1 w-full max-w-md mx-auto md:max-w-none">
+              <div className="border border-slate-900 dark:border-white p-6 sm:p-8 bg-transparent">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Book a Session</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">Select a convenient time for a 1-hour Google Meet call.</p>
 
-              <span className="flex items-center justify-center gap-3 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 px-4 sm:px-6 py-3 sm:py-4 rounded-lg">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
-                </svg>
-                <span>Discord: m.liminal</span>
-              </span>
-            </div>
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Date</label>
+                    <input
+                      type="date"
+                      id="meetingDate"
+                      className="w-full bg-transparent border border-slate-300 dark:border-slate-700 rounded-none px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-1 focus:ring-slate-900 dark:focus:ring-white focus:border-slate-900 dark:focus:border-white transition-all transition-colors"
+                      min={new Date().toISOString().split('T')[0]}
+                    />
+                  </div>
 
-            {/* Simple Message */}
-            <div className="text-center">
-              <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
-                Feel free to reach out for collaborations, technical discussions, or just to say hello!
-              </p>
-              <p className="text-slate-500 dark:text-slate-500 text-xs">
-                Languages: English, Chinese, Indonesian, Japanese
-              </p>
+                  <div>
+                    <label className="block text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Time Slot</label>
+                    <div className="relative">
+                      <select
+                        id="meetingTime"
+                        className="w-full bg-transparent border border-slate-300 dark:border-slate-700 rounded-none px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-1 focus:ring-slate-900 dark:focus:ring-white focus:border-slate-900 dark:focus:border-white transition-all appearance-none cursor-pointer transition-colors"
+                      >
+                        <option value="" className="bg-white dark:bg-slate-900">Select time</option>
+                        <option value="17:00" className="bg-white dark:bg-slate-900">5:00 PM - 6:00 PM</option>
+                        <option value="17:30" className="bg-white dark:bg-slate-900">5:30 PM - 6:30 PM</option>
+                        <option value="20:00" className="bg-white dark:bg-slate-900">8:00 PM - 9:00 PM</option>
+                        <option value="20:30" className="bg-white dark:bg-slate-900">8:30 PM - 9:30 PM</option>
+                        <option value="21:00" className="bg-white dark:bg-slate-900">9:00 PM - 10:00 PM</option>
+                        <option value="21:30" className="bg-white dark:bg-slate-900">9:30 PM - 10:30 PM</option>
+                        <option value="22:00" className="bg-white dark:bg-slate-900">10:00 PM - 11:00 PM</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Discussion Topic</label>
+                    <div className="relative">
+                      <select
+                        id="meetingType"
+                        className="w-full bg-transparent border border-slate-300 dark:border-slate-700 rounded-none px-4 py-3 text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:ring-1 focus:ring-slate-900 dark:focus:ring-white focus:border-slate-900 dark:focus:border-white transition-all appearance-none cursor-pointer transition-colors"
+                      >
+                        <option value="" className="bg-white dark:bg-slate-900">Select topic</option>
+                        <option value="project" className="bg-white dark:bg-slate-900">Project Work</option>
+                        <option value="career" className="bg-white dark:bg-slate-900">Career / Networking</option>
+                        <option value="technical" className="bg-white dark:bg-slate-900">Technical Discussion</option>
+                        <option value="audio" className="bg-white dark:bg-slate-900">Audio Engineering</option>
+                        <option value="other" className="bg-white dark:bg-slate-900">Other</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => {
+                        const date = document.getElementById('meetingDate').value;
+                        const time = document.getElementById('meetingTime').value;
+                        const type = document.getElementById('meetingType').value;
+
+                        if (!date || !time || !type) {
+                          alert('Please fill in all the details before scheduling.');
+                          return;
+                        }
+
+                        const selectedDate = new Date(date);
+                        const dayOfWeek = selectedDate.getDay();
+                        if (dayOfWeek === 0 || dayOfWeek === 6) {
+                          alert('Hey! Bookings are currently only available on weekdays (Mon-Fri).');
+                          return;
+                        }
+
+                        const eventDate = new Date(`${date}T${time}:00`);
+                        const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000);
+
+                        const calendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?text=Chat+with+L1M1N4L+-+${encodeURIComponent(type)}&dates=${eventDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endDate.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&details=Topic:+${encodeURIComponent(type)}%0A%0ALooking+forward+to+our+chat!&location=Google+Meet&add=your.email%40example.com`;
+
+                        window.open(calendarUrl, '_blank');
+                      }}
+                      className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-3 rounded-none font-semibold transition-all hover:bg-slate-800 dark:hover:bg-slate-200 active:scale-[0.98]"
+                    >
+                      Schedule via Calendar
+                    </button>
+                    <p className="text-center text-xs text-slate-500 mt-4">
+                      Weekdays only • Google Meet generated
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-slate-200 dark:border-[#2d2f34] text-center text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-[#18191c]">
-        &copy; {new Date().getFullYear()} L1M1N4L. All rights reserved.
-      </footer>
+      {/* Cyberpunk HUD Footer Overlay */}
+      <div className="hidden md:flex fixed bottom-0 left-0 w-full pointer-events-none z-50 p-4 sm:p-6 justify-between items-end font-mono text-[9px] sm:text-[10px] text-white mix-blend-difference font-bold tracking-widest leading-tight">
+        {/* Left Side HUD */}
+
+        <div className="flex gap-4">
+          <div className="flex flex-col gap-1 origin-bottom-left scale-90 sm:scale-100">
+            <div className="flex items-center gap-2">
+              <span className="opacity-60">CLIENT:</span>
+              <span>{clientName}</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex gap-2">
+                <span className="opacity-60">VIEWPORT:</span>
+                <span>{windowSize.width}x{windowSize.height}</span>
+              </div>
+              <div className="flex gap-2 hidden md:flex">
+                <span className="opacity-60">SCREEN:</span>
+                <span>{typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : '1920x1080'}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="opacity-60">DEPTH:</span>
+              <span>{typeof window !== 'undefined' ? window.screen.colorDepth : 32}BIT</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side HUD */}
+        <div className="flex flex-col items-end gap-1 origin-bottom-right scale-90 sm:scale-100">
+          <div className="flex items-center gap-4">
+            <div className="flex gap-2 hidden md:flex">
+              <span className="opacity-60">UTC:</span>
+              {time.toISOString().substring(11, 19)}
+            </div>
+            <div className="flex gap-2">
+              <span className="opacity-60">LOCAL:</span>
+              {time.toLocaleTimeString('en-US', { hour12: false })}
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex gap-2">
+              <span className="opacity-60">UNIX:</span>
+              <span>{Math.floor(time.getTime() / 1000)}</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex gap-2">
+              <span className="opacity-60">ZONE:</span>
+              <span>
+                {(() => {
+                  const offset = -new Date().getTimezoneOffset() / 60;
+                  return `GMT${offset >= 0 ? '+' : ''}${offset}`;
+                })()}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="opacity-60">STATUS:</span>
+              <span className="text-[#0f0] animate-pulse">●</span>
+              <span>ON</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

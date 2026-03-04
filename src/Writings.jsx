@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
-import paperMusicSocial from './assets/A7_Music_Popularity_and_Social_Media (3).pdf';
-import paperMonteCarlo from './assets/MonteCarloSimulationofAnnealingandGrainGrowth.pdf';
+import paperMusicSocial from './assets/music_popularity_paper.pdf';
+import paperMonteCarlo from './assets/monte_carlo_paper.pdf';
+import paperCognitiveAI from './assets/cognitive_ai_paper.pdf';
 
 const Writings = () => {
   const [loading, setLoading] = useState(true);
@@ -51,6 +52,13 @@ const Writings = () => {
   ];
 
   const academia = [
+    {
+      title: 'Cognitive AI Approaches to Adaptive Scheduling in Braille Memory Retention',
+      excerpt: 'Designed and evaluated a hybrid SM-2 + ML scheduling algorithm, benchmarking long-term retention, review efficiency, and system cost across a 365-day simulation.',
+      link: paperCognitiveAI,
+      type: 'Research Paper',
+      year: '2025',
+    },
     {
       title: 'Music Popularity and Social Media',
       excerpt: 'Analysis of how social media signals correlate with music popularity trajectories.',
